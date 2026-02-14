@@ -68,7 +68,8 @@ export async function fetchAllVideos(apiKey: string): Promise<RawVideo[]> {
   console.log('\nFetching videos...');
 
   while (true) {
-    const playlistResponse: Awaited<ReturnType<typeof youtube.playlistItems.list>> = await youtube.playlistItems.list({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const playlistResponse: any = await youtube.playlistItems.list({
       part: ['snippet', 'contentDetails'],
       playlistId: uploadsPlaylistId,
       maxResults: 50,
