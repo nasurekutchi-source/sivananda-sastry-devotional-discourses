@@ -24,25 +24,18 @@ export function SearchBar() {
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search videos..."
-        className="w-full pl-10 pr-4 py-2 text-sm bg-brand-900 border border-brand-700 rounded-lg
-                   text-brand-100 placeholder-brand-500
-                   focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500/30
-                   transition-colors"
+        placeholder="Search teachings..."
+        className="w-full px-4 py-2.5 pr-10 bg-bg-tertiary border border-border-medium rounded
+                   text-text-primary text-[0.95rem] font-body
+                   placeholder-text-tertiary
+                   focus:outline-none focus:border-accent-primary focus:shadow-[0_0_0_3px_rgba(139,90,60,0.1)]
+                   transition-all duration-300"
       />
-      <svg
-        className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-500"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-        />
-      </svg>
+      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-accent-secondary pointer-events-none text-lg">
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </span>
     </form>
   );
 }

@@ -12,8 +12,8 @@ function formatDate(dateStr: string): string {
     const date = new Date(dateStr);
     return date.toLocaleDateString('en-US', {
       year: 'numeric',
-      month: 'short',
-      day: 'numeric',
+      month: 'long',
+      day: '2-digit',
     });
   } catch {
     return dateStr;
@@ -36,43 +36,46 @@ export function VideoCard({ video }: VideoCardProps) {
       href={YOUTUBE_VIDEO_URL(video.id)}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block bg-brand-800 border border-brand-700 rounded-lg overflow-hidden
-                 hover:border-brand-500 hover:shadow-lg hover:shadow-brand-950/50
-                 transition-all duration-200 hover:-translate-y-1"
+      className="group block bg-bg-tertiary border border-border-light rounded-md overflow-hidden
+                 transition-all duration-300 cursor-pointer
+                 hover:-translate-y-1.5 hover:shadow-elevated hover:border-accent-light"
     >
       {/* Thumbnail */}
-      <div className="relative aspect-video bg-brand-900 overflow-hidden">
-        <img
-          src={video.th || `https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`}
-          alt={video.t}
-          loading="lazy"
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-        />
+      <div className="relative overflow-hidden" style={{ paddingBottom: '56.25%' }}>
+        <div className="absolute inset-0 bg-gradient-to-br from-bg-secondary to-accent-light">
+          <img
+            src={video.th || `https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`}
+            alt={video.t}
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-400 group-hover:scale-[1.08]"
+          />
+        </div>
         {/* Play overlay */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-          <div className="w-14 h-14 bg-brand-300/90 rounded-full flex items-center justify-center">
-            <svg className="w-6 h-6 text-brand-950 ml-1" fill="currentColor" viewBox="0 0 24 24">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-[60px] h-[60px] bg-accent-primary/95 rounded-full flex items-center justify-center
+                         shadow-card transition-all duration-300 group-hover:bg-accent-primary group-hover:scale-110">
+            <svg className="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
               <path d="M8 5v14l11-7z" />
             </svg>
           </div>
         </div>
         {/* Language badge */}
-        <div className="absolute top-2 right-2">
+        <div className="absolute top-3 right-3">
           <LanguageBadge lang={video.l} />
         </div>
       </div>
 
       {/* Info */}
-      <div className="p-3">
-        <h3 className="font-heading text-sm font-medium text-brand-100 leading-snug line-clamp-2 mb-1.5">
+      <div className="p-5">
+        <h3 className="font-heading text-[1.15rem] font-semibold text-text-primary leading-[1.4] line-clamp-2 mb-2">
           {video.t}
         </h3>
         {video.d && (
-          <p className="text-xs text-brand-400 line-clamp-2 mb-2">
+          <p className="text-[0.9rem] text-text-tertiary leading-relaxed line-clamp-2 mb-3">
             {video.d}
           </p>
         )}
-        <p className="text-xs text-brand-500">
+        <p className="text-[0.8rem] text-text-tertiary tracking-wide">
           {formatDate(video.p)}
         </p>
       </div>

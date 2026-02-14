@@ -10,7 +10,7 @@ interface VideoGridProps {
 export function VideoGrid({ videos }: VideoGridProps) {
   if (videos.length === 0) {
     return (
-      <div className="text-center py-16 text-brand-500">
+      <div className="text-center py-16 text-text-tertiary">
         <p className="text-lg mb-2">No videos found</p>
         <p className="text-sm">Try adjusting your filters or search query.</p>
       </div>
@@ -18,7 +18,7 @@ export function VideoGrid({ videos }: VideoGridProps) {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
       {videos.map((video) => (
         <VideoCard key={video.id} video={video} />
       ))}

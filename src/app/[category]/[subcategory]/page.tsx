@@ -40,7 +40,6 @@ export default function SubcategoryPage() {
       .finally(() => setLoading(false));
   }, [subcategoryId]);
 
-  // Reset page when filter changes
   useEffect(() => {
     setCurrentPage(1);
   }, [langFilter]);
@@ -48,13 +47,11 @@ export default function SubcategoryPage() {
   const category = categoriesData?.categories.find((c) => c.id === categoryId);
   const subcategory = category?.subcategories.find((s) => s.id === subcategoryId);
 
-  // Filter by language
   const filteredVideos = useMemo(() => {
     if (langFilter === 'all') return videos;
     return videos.filter((v) => v.l === langFilter);
   }, [videos, langFilter]);
 
-  // Language counts
   const langCounts = useMemo(() => {
     const counts = { english: 0, telugu: 0, mixed: 0, all: videos.length };
     for (const v of videos) {
@@ -63,7 +60,6 @@ export default function SubcategoryPage() {
     return counts;
   }, [videos]);
 
-  // Paginate
   const totalPages = Math.ceil(filteredVideos.length / VIDEOS_PER_PAGE);
   const pageVideos = filteredVideos.slice(
     (currentPage - 1) * VIDEOS_PER_PAGE,
@@ -75,9 +71,9 @@ export default function SubcategoryPage() {
   if (!category || !subcategory) {
     return (
       <div className="text-center py-16">
-        <h1 className="font-heading text-2xl text-brand-300 mb-4">Not Found</h1>
-        <Link href="/" className="text-brand-400 hover:text-brand-300">
-          ← Back to Home
+        <h1 className="font-heading text-2xl text-accent-primary mb-4">Not Found</h1>
+        <Link href="/" className="text-accent-secondary hover:text-accent-primary transition-colors">
+          Back to Home
         </Link>
       </div>
     );
@@ -93,32 +89,36 @@ export default function SubcategoryPage() {
       />
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-        <div>
-          <h1 className="font-heading text-2xl sm:text-3xl font-bold text-brand-300">
+      <div className="flex items-center gap-4 mb-6 pb-6 border-b border-border-medium">
+        <span className="text-[3rem] text-accent-primary">{category.icon}</span>
+        <div className="flex-1">
+          <h1 className="font-heading text-[2.25rem] font-semibold text-accent-primary">
             {subcategory.name}
           </h1>
-          <p className="text-sm text-brand-500 mt-1">
+          <p className="text-[0.95rem] text-text-tertiary mt-1">
             {filteredVideos.length} videos
             {langFilter !== 'all' && ` (filtered from ${videos.length})`}
             {totalPages > 1 && ` · Page ${currentPage} of ${totalPages}`}
           </p>
         </div>
+      </div>
 
-        {/* Language filter - only show if multiple languages exist */}
-        {(langCounts.english > 0 && langCounts.telugu > 0) && (
+      {/* Language filter */}
+      {(langCounts.english > 0 && langCounts.telugu > 0) && (
+        <div className="mb-8 p-5 bg-bg-secondary border border-border-light rounded">
+          <span className="block text-[0.8rem] text-accent-primary uppercase tracking-[1.5px] font-semibold mb-3">
+            Filter by Language
+          </span>
           <LanguageToggle
             value={langFilter}
             onChange={setLangFilter}
             counts={langCounts}
           />
-        )}
-      </div>
+        </div>
+      )}
 
-      {/* Video Grid */}
       <VideoGrid videos={pageVideos} />
 
-      {/* Pagination */}
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}

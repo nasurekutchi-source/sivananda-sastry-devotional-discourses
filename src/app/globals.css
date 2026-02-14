@@ -5,65 +5,95 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    font-size: 16px;
   }
 
   body {
-    @apply bg-brand-950 text-brand-100 font-body;
+    @apply bg-bg-primary text-text-primary font-body antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
   }
 
-  /* Custom scrollbar */
+  /* Elegant scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-brand-950;
+    @apply bg-bg-secondary;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-brand-700 rounded-full;
+    @apply bg-accent-light rounded-full;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-brand-500;
+    @apply bg-accent-secondary;
   }
 }
 
 @layer components {
-  .sidebar-link {
-    @apply block px-3 py-1.5 text-sm text-brand-200 rounded-md
-           hover:bg-brand-800 hover:text-brand-300 transition-colors;
+  /* Sidebar navigation items */
+  .nav-item {
+    @apply relative flex items-center gap-3 px-5 py-3 cursor-pointer
+           border-l-[3px] border-transparent
+           transition-all duration-200;
   }
 
-  .sidebar-link-active {
-    @apply bg-brand-800/60 text-brand-300 font-medium;
+  .nav-item::before {
+    content: '';
+    @apply absolute left-0 top-0 h-full w-0 transition-[width] duration-200;
+    background: linear-gradient(90deg, theme('colors.accent.light'), transparent);
   }
 
-  .category-badge {
-    @apply inline-flex items-center px-2 py-0.5 text-xs rounded-full
-           bg-brand-800 text-brand-300 border border-brand-700;
+  .nav-item:hover::before {
+    @apply w-full;
   }
 
+  .nav-item:hover {
+    border-left-color: #8b5a3c;
+  }
+
+  .nav-item-active {
+    border-left-color: #8b5a3c;
+    background: linear-gradient(90deg, rgba(193, 125, 79, 0.08), transparent);
+  }
+
+  /* Language badges */
   .lang-badge {
-    @apply inline-flex items-center justify-center w-6 h-6 text-[10px] font-bold
+    @apply inline-flex items-center justify-center px-2 py-0.5 text-[10px] font-bold
            rounded-full uppercase tracking-wider;
   }
 
   .lang-badge-en {
-    @apply bg-blue-900/50 text-blue-300 border border-blue-800;
+    @apply bg-blue-50 text-blue-700 border border-blue-200;
   }
 
   .lang-badge-te {
-    @apply bg-emerald-900/50 text-emerald-300 border border-emerald-800;
+    @apply bg-emerald-50 text-emerald-700 border border-emerald-200;
   }
 
   .lang-badge-mx {
-    @apply bg-purple-900/50 text-purple-300 border border-purple-800;
+    @apply bg-purple-50 text-purple-700 border border-purple-200;
   }
-}
 
-@layer utilities {
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-300 to-brand-400;
+  /* Ornamental divider */
+  .ornament {
+    @apply w-14 h-0.5 bg-accent-primary;
+  }
+
+  /* Subsection filter buttons */
+  .filter-btn {
+    @apply px-4 py-2 bg-bg-tertiary border border-border-medium rounded-full
+           text-sm text-text-secondary cursor-pointer
+           transition-all duration-200 font-body;
+  }
+
+  .filter-btn:hover {
+    @apply bg-accent-light text-accent-primary border-accent-primary -translate-y-0.5;
+  }
+
+  .filter-btn-active {
+    @apply bg-accent-primary text-white border-accent-primary font-semibold;
   }
 }

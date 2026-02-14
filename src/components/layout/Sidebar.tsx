@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { SidebarItem } from './SidebarItem';
+import { SearchBar } from '@/components/ui/SearchBar';
 import type { CategoriesData } from '@/lib/types';
 
 interface SidebarProps {
@@ -20,84 +21,70 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     fetch(`${basePath}/data/processed/categories.json`)
       .then((res) => res.json())
       .then(setData)
-      .catch(() => {
-        // Silently fail if data not available yet
-      });
+      .catch(() => {});
   }, []);
 
-  // Close sidebar on navigation (mobile)
   useEffect(() => {
     onClose();
   }, [pathname]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Filter out categories with zero videos
   const visibleCategories = data?.categories.filter((c) => c.videoCount > 0) || [];
 
   return (
-    <>
-      {/* Mobile overlay */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black/60 z-40 lg:hidden"
-          onClick={onClose}
-        />
+    <aside
+      className={`
+        fixed left-0 top-0 z-[1000] w-[300px] h-screen overflow-y-auto
+        bg-gradient-to-b from-bg-tertiary to-bg-secondary
+        border-r border-border-light shadow-card
+        transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
+        lg:translate-x-0
+        ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+        max-lg:max-w-[85vw] max-lg:w-[280px] max-lg:z-[1001]
+      `}
+    >
+      {/* Panel Header */}
+      <div className="px-8 pt-10 pb-6 text-center border-b border-border-light bg-bg-tertiary">
+        <Link href="/" className="block">
+          <h1 className="font-heading text-[1.75rem] font-semibold text-accent-primary tracking-wide leading-tight">
+            Sivananda Sastry
+          </h1>
+          <p className="text-[0.75rem] text-text-tertiary uppercase tracking-[2px] mt-1 font-light">
+            Spiritual Teachings
+          </p>
+        </Link>
+      </div>
+
+      {/* Search */}
+      <div className="px-5 py-4 border-b border-border-light">
+        <SearchBar />
+      </div>
+
+      {/* Navigation */}
+      <nav className="py-2">
+        <Link
+          href="/"
+          className={`nav-item ${pathname === '/' ? 'nav-item-active' : ''}`}
+        >
+          <span className="text-lg shrink-0">🙏</span>
+          <span className="font-heading text-[1.05rem] font-medium text-text-primary relative z-[1]">
+            About
+          </span>
+        </Link>
+
+        {visibleCategories.map((category) => (
+          <SidebarItem
+            key={category.id}
+            category={category}
+            currentPath={pathname}
+          />
+        ))}
+      </nav>
+
+      {data && (
+        <div className="px-6 py-5 text-center text-[0.75rem] text-text-tertiary border-t border-border-light mt-auto">
+          <p>{data.totalVideos.toLocaleString()} videos &middot; {visibleCategories.length} categories</p>
+        </div>
       )}
-
-      {/* Sidebar */}
-      <aside
-        className={`
-          fixed lg:sticky top-16 left-0 z-40
-          w-72 h-[calc(100vh-4rem)] overflow-y-auto
-          bg-brand-950 border-r border-brand-700
-          transition-transform duration-300 ease-in-out
-          lg:translate-x-0 lg:block
-          ${isOpen ? 'translate-x-0' : '-translate-x-full'}
-        `}
-      >
-        <nav className="p-4 space-y-1">
-          {/* Home link */}
-          <Link
-            href="/"
-            className={`sidebar-link flex items-center gap-2 ${
-              pathname === '/' ? 'sidebar-link-active' : ''
-            }`}
-          >
-            <span className="text-base">🏠</span>
-            <span>Home</span>
-          </Link>
-
-          {/* Stats */}
-          {data && (
-            <div className="px-3 py-2 text-xs text-brand-500">
-              {data.totalVideos.toLocaleString()} videos &middot;{' '}
-              {visibleCategories.length} categories
-            </div>
-          )}
-
-          <div className="border-t border-brand-800 my-2" />
-
-          {/* Categories */}
-          {visibleCategories.map((category) => (
-            <SidebarItem
-              key={category.id}
-              category={category}
-              currentPath={pathname}
-            />
-          ))}
-
-          {/* About link */}
-          <div className="border-t border-brand-800 my-2" />
-          <Link
-            href="/about/"
-            className={`sidebar-link flex items-center gap-2 ${
-              pathname === '/about' || pathname === '/about/' ? 'sidebar-link-active' : ''
-            }`}
-          >
-            <span className="text-base">ℹ️</span>
-            <span>About</span>
-          </Link>
-        </nav>
-      </aside>
-    </>
+    </aside>
   );
 }

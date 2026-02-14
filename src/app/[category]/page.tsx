@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
-import type { CategoriesData, Category } from '@/lib/types';
+import type { CategoriesData } from '@/lib/types';
 
 export default function CategoryPage() {
   const params = useParams();
@@ -30,9 +30,9 @@ export default function CategoryPage() {
   if (!category) {
     return (
       <div className="text-center py-16">
-        <h1 className="font-heading text-2xl text-brand-300 mb-4">Category Not Found</h1>
-        <Link href="/" className="text-brand-400 hover:text-brand-300">
-          ← Back to Home
+        <h1 className="font-heading text-2xl text-accent-primary mb-4">Category Not Found</h1>
+        <Link href="/" className="text-accent-secondary hover:text-accent-primary transition-colors">
+          Back to Home
         </Link>
       </div>
     );
@@ -44,31 +44,32 @@ export default function CategoryPage() {
     <div>
       <Breadcrumbs items={[{ label: category.name }]} />
 
-      <div className="flex items-center gap-3 mb-8">
-        <span className="text-3xl">{category.icon}</span>
+      {/* Category Header */}
+      <div className="flex items-center gap-4 mb-8 pb-6 border-b border-border-medium">
+        <span className="text-[3rem] text-accent-primary">{category.icon}</span>
         <div>
-          <h1 className="font-heading text-3xl font-bold text-brand-300">
+          <h1 className="font-heading text-[2.25rem] font-semibold text-accent-primary mb-1">
             {category.name}
           </h1>
-          <p className="text-sm text-brand-500 mt-1">
-            {category.videoCount} videos across {visibleSubs.length} subcategories
+          <p className="text-[0.95rem] text-text-tertiary">
+            {category.videoCount.toLocaleString()} videos available
           </p>
         </div>
       </div>
 
-      {/* Subcategory cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {/* Subcategory Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {visibleSubs.map((sub) => (
           <Link
             key={sub.id}
             href={`/${sub.slug}/`}
-            className="group block p-5 bg-brand-800/50 border border-brand-700 rounded-lg
-                       hover:border-brand-500 hover:bg-brand-800 transition-all"
+            className="group block p-6 bg-bg-tertiary border border-border-light rounded
+                       transition-all duration-300 hover:-translate-y-1 hover:shadow-card hover:border-accent-light"
           >
-            <h2 className="font-heading text-lg font-medium text-brand-200 group-hover:text-brand-300 transition-colors mb-2">
+            <h2 className="font-heading text-[1.2rem] font-semibold text-text-primary group-hover:text-accent-primary transition-colors mb-2">
               {sub.name}
             </h2>
-            <p className="text-sm text-brand-500">
+            <p className="text-[0.9rem] text-text-tertiary">
               {sub.videoCount} videos
             </p>
           </Link>

@@ -10,10 +10,7 @@ interface SidebarItemProps {
 }
 
 export function SidebarItem({ category, currentPath }: SidebarItemProps) {
-  // Filter out subcategories with zero videos
   const visibleSubs = category.subcategories.filter((s) => s.videoCount > 0);
-
-  // Auto-expand if current path is in this category
   const isInCategory = currentPath.startsWith(`/${category.id}`);
   const [expanded, setExpanded] = useState(isInCategory);
 
@@ -23,20 +20,19 @@ export function SidebarItem({ category, currentPath }: SidebarItemProps) {
 
   return (
     <div>
-      {/* Category header */}
       <button
         onClick={() => setExpanded(!expanded)}
-        className={`w-full sidebar-link flex items-center gap-2 group ${
-          isInCategory && !currentPath.includes('/') ? 'sidebar-link-active' : ''
-        }`}
+        className={`nav-item w-full ${isInCategory ? 'nav-item-active' : ''}`}
       >
-        <span className="text-base shrink-0">{category.icon}</span>
-        <span className="flex-1 text-left truncate">{category.name}</span>
-        <span className="text-xs text-brand-500 tabular-nums">
-          {category.videoCount}
+        <span className="text-lg shrink-0">{category.icon}</span>
+        <span className="font-heading text-[1.05rem] font-medium text-text-primary flex-1 text-left relative z-[1]">
+          {category.name}
+        </span>
+        <span className="text-[0.7rem] text-text-tertiary bg-bg-secondary px-2 py-0.5 rounded-xl relative z-[1] tabular-nums">
+          {category.videoCount.toLocaleString()}
         </span>
         <svg
-          className={`w-3.5 h-3.5 text-brand-500 transition-transform duration-200 ${
+          className={`w-3.5 h-3.5 text-text-tertiary transition-transform duration-200 relative z-[1] ${
             expanded ? 'rotate-90' : ''
           }`}
           fill="none"
@@ -47,20 +43,19 @@ export function SidebarItem({ category, currentPath }: SidebarItemProps) {
         </svg>
       </button>
 
-      {/* Subcategories */}
       <div
-        className={`overflow-hidden transition-all duration-200 ${
-          expanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+        className={`overflow-hidden transition-all duration-300 ${
+          expanded ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className="ml-5 pl-3 border-l border-brand-800 space-y-0.5 py-1">
-          {/* "All in category" link */}
+        <div className="ml-9 pl-4 border-l border-border-light space-y-0.5 py-1">
           {visibleSubs.length > 1 && (
             <Link
               href={`/${category.id}/`}
-              className={`sidebar-link text-xs ${
+              className={`block px-3 py-1.5 text-[0.85rem] text-text-secondary rounded-md
+                         hover:bg-accent-light/40 hover:text-accent-primary transition-colors ${
                 currentPath === `/${category.id}` || currentPath === `/${category.id}/`
-                  ? 'sidebar-link-active'
+                  ? 'bg-accent-light/40 text-accent-primary font-medium'
                   : ''
               }`}
             >
@@ -70,19 +65,21 @@ export function SidebarItem({ category, currentPath }: SidebarItemProps) {
 
           {visibleSubs.map((sub) => {
             const subPath = `/${sub.slug}/`;
-            const isActive =
-              currentPath === `/${sub.slug}` || currentPath === subPath;
+            const isActive = currentPath === `/${sub.slug}` || currentPath === subPath;
 
             return (
               <Link
                 key={sub.id}
                 href={subPath}
-                className={`sidebar-link text-xs flex items-center justify-between ${
-                  isActive ? 'sidebar-link-active' : ''
+                className={`flex items-center justify-between px-3 py-1.5 text-[0.85rem] rounded-md
+                           transition-colors ${
+                  isActive
+                    ? 'bg-accent-light/40 text-accent-primary font-medium'
+                    : 'text-text-secondary hover:bg-accent-light/30 hover:text-accent-primary'
                 }`}
               >
                 <span className="truncate">{sub.name}</span>
-                <span className="text-brand-600 tabular-nums text-[11px] ml-1">
+                <span className="text-[0.7rem] text-text-tertiary tabular-nums ml-2">
                   {sub.videoCount}
                 </span>
               </Link>

@@ -20,7 +20,6 @@ function SearchContent() {
   const [currentPage, setCurrentPage] = useState(1);
   const [langFilter, setLangFilter] = useState<LangFilter>('all');
 
-  // Load all category data for search
   useEffect(() => {
     const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
     fetch(`${basePath}/data/processed/categories.json`)
@@ -55,12 +54,10 @@ function SearchContent() {
       .finally(() => setLoading(false));
   }, []);
 
-  // Reset page on query/filter change
   useEffect(() => {
     setCurrentPage(1);
   }, [query, langFilter]);
 
-  // Search + filter
   const results = useMemo(() => {
     if (!query) return [];
     const q = query.toLowerCase();
@@ -96,13 +93,13 @@ function SearchContent() {
 
   return (
     <div>
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 pb-6 border-b border-border-medium">
         <div>
-          <h1 className="font-heading text-2xl font-bold text-brand-300">
+          <h1 className="font-heading text-[2.25rem] font-semibold text-accent-primary">
             {query ? `Search: "${query}"` : 'Search'}
           </h1>
           {query && (
-            <p className="text-sm text-brand-500 mt-1">
+            <p className="text-[0.95rem] text-text-tertiary mt-1">
               {results.length} result{results.length !== 1 ? 's' : ''} found
               {totalPages > 1 && ` · Page ${currentPage} of ${totalPages}`}
             </p>
@@ -119,9 +116,9 @@ function SearchContent() {
       </div>
 
       {!query ? (
-        <div className="text-center py-16 text-brand-500">
+        <div className="text-center py-16 text-text-tertiary">
           <p className="text-lg mb-2">Enter a search term</p>
-          <p className="text-sm">Use the search bar above to find videos.</p>
+          <p className="text-sm">Use the search bar to find videos.</p>
         </div>
       ) : (
         <>

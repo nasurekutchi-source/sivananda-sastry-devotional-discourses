@@ -10,15 +10,15 @@ interface LanguageToggleProps {
   counts?: { english: number; telugu: number; mixed: number; all: number };
 }
 
-const OPTIONS: { value: FilterValue; label: string; short: string }[] = [
-  { value: 'all', label: 'All', short: 'All' },
-  { value: 'english', label: 'English', short: 'EN' },
-  { value: 'telugu', label: 'Telugu', short: 'TE' },
+const OPTIONS: { value: FilterValue; label: string }[] = [
+  { value: 'all', label: 'All' },
+  { value: 'english', label: 'English' },
+  { value: 'telugu', label: 'Telugu' },
 ];
 
 export function LanguageToggle({ value, onChange, counts }: LanguageToggleProps) {
   return (
-    <div className="inline-flex rounded-lg border border-brand-700 overflow-hidden">
+    <div className="flex gap-2 flex-wrap">
       {OPTIONS.map((opt) => {
         const isActive = value === opt.value;
         const count = counts?.[opt.value === 'all' ? 'all' : opt.value];
@@ -27,16 +27,11 @@ export function LanguageToggle({ value, onChange, counts }: LanguageToggleProps)
           <button
             key={opt.value}
             onClick={() => onChange(opt.value)}
-            className={`px-3 py-1.5 text-xs font-medium transition-colors ${
-              isActive
-                ? 'bg-brand-300 text-brand-950'
-                : 'bg-brand-900 text-brand-400 hover:bg-brand-800'
-            }`}
+            className={`filter-btn ${isActive ? 'filter-btn-active' : ''}`}
           >
-            <span className="hidden sm:inline">{opt.label}</span>
-            <span className="sm:hidden">{opt.short}</span>
+            {opt.label}
             {count !== undefined && (
-              <span className={`ml-1 ${isActive ? 'text-brand-700' : 'text-brand-600'}`}>
+              <span className={`ml-1.5 ${isActive ? 'text-white/70' : 'text-text-tertiary'}`}>
                 ({count})
               </span>
             )}

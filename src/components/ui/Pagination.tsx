@@ -9,7 +9,6 @@ interface PaginationProps {
 export function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) {
   if (totalPages <= 1) return null;
 
-  // Generate page numbers to show
   const pages: (number | '...')[] = [];
   const delta = 2;
 
@@ -25,32 +24,33 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
     }
   }
 
+  const btnBase = `px-3 py-2 text-sm rounded border transition-all duration-200 font-body`;
+
   return (
-    <div className="flex items-center justify-center gap-1.5 mt-8">
-      {/* Previous */}
+    <div className="flex items-center justify-center gap-1.5 mt-10">
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="px-3 py-1.5 text-sm rounded-md border border-brand-700 text-brand-300
-                   hover:bg-brand-800 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+        className={`${btnBase} border-border-medium text-text-secondary
+                   hover:bg-accent-light hover:text-accent-primary hover:-translate-y-0.5
+                   disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:translate-y-0`}
       >
-        ← Prev
+        Prev
       </button>
 
-      {/* Page numbers */}
       {pages.map((page, idx) =>
         page === '...' ? (
-          <span key={`dots-${idx}`} className="px-2 text-brand-500">
+          <span key={`dots-${idx}`} className="px-2 text-text-tertiary">
             ...
           </span>
         ) : (
           <button
             key={page}
             onClick={() => onPageChange(page)}
-            className={`w-9 h-9 text-sm rounded-md border transition-colors ${
+            className={`${btnBase} w-10 h-10 ${
               page === currentPage
-                ? 'bg-brand-300 text-brand-950 border-brand-300 font-semibold'
-                : 'border-brand-700 text-brand-300 hover:bg-brand-800'
+                ? 'bg-accent-primary text-white border-accent-primary font-semibold'
+                : 'border-border-medium text-text-secondary hover:bg-accent-light hover:text-accent-primary'
             }`}
           >
             {page}
@@ -58,14 +58,14 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
         )
       )}
 
-      {/* Next */}
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="px-3 py-1.5 text-sm rounded-md border border-brand-700 text-brand-300
-                   hover:bg-brand-800 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+        className={`${btnBase} border-border-medium text-text-secondary
+                   hover:bg-accent-light hover:text-accent-primary hover:-translate-y-0.5
+                   disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:translate-y-0`}
       >
-        Next →
+        Next
       </button>
     </div>
   );

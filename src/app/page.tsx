@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { VideoGrid } from '@/components/video/VideoGrid';
 import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
-import { SITE_NAME, SITE_TAGLINE, SITE_DESCRIPTION, CHANNEL_URL } from '@/lib/constants';
+import { Footer } from '@/components/layout/Footer';
+import { SITE_DESCRIPTION, CHANNEL_URL } from '@/lib/constants';
 import type { CategoriesData, CompactVideo } from '@/lib/types';
 
 export default function HomePage() {
@@ -34,81 +35,96 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="text-center mb-12">
-        <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-brand-300 to-transparent mx-auto mb-6" />
-        <h1 className="font-heading text-4xl sm:text-5xl font-bold text-gradient mb-3">
-          {SITE_NAME}
-        </h1>
-        <p className="text-brand-400 text-lg tracking-widest uppercase mb-6">
-          {SITE_TAGLINE}
+      {/* About Section */}
+      <section className="max-w-3xl mb-12">
+        <div className="ornament mb-8" />
+        <h2 className="font-heading text-[2.75rem] font-semibold text-accent-primary mb-5 leading-[1.2]">
+          About Sivananda Sastry
+        </h2>
+        <p className="text-[1.05rem] leading-[1.8] text-text-secondary mb-4">
+          Welcome to the comprehensive digital archive of Sivananda Sastry&apos;s spiritual
+          teachings. This collection encompasses profound discourses on Vedic scriptures,
+          sacred hymns, devotional songs, and timeless wisdom from ancient Indian spiritual
+          traditions.
         </p>
-        <p className="max-w-2xl mx-auto text-brand-400 leading-relaxed mb-8">
+        <p className="text-[1.05rem] leading-[1.8] text-text-secondary mb-4">
           {SITE_DESCRIPTION}
+        </p>
+        <p className="text-[1.05rem] leading-[1.8] text-text-secondary">
+          Each video is a gateway to deeper understanding and spiritual growth, offering
+          insights into the rich heritage of Hindu philosophy, mythology, and devotional
+          practices.
         </p>
 
         {/* Stats */}
         {categories && (
-          <div className="flex justify-center gap-8 sm:gap-12 flex-wrap">
-            <div className="text-center">
-              <span className="block font-heading text-3xl font-bold text-brand-300">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10">
+            <div className="bg-bg-tertiary p-6 border border-border-light rounded text-center
+                          transition-all duration-300 hover:-translate-y-1 hover:shadow-card hover:border-accent-light">
+              <span className="block font-heading text-[2.5rem] font-bold text-accent-primary mb-1">
                 {categories.totalVideos.toLocaleString()}
               </span>
-              <span className="text-xs text-brand-500 uppercase tracking-widest">Videos</span>
+              <span className="text-[0.85rem] text-text-tertiary uppercase tracking-[1.5px]">
+                Total Videos
+              </span>
             </div>
-            <div className="text-center">
-              <span className="block font-heading text-3xl font-bold text-brand-300">
+            <div className="bg-bg-tertiary p-6 border border-border-light rounded text-center
+                          transition-all duration-300 hover:-translate-y-1 hover:shadow-card hover:border-accent-light">
+              <span className="block font-heading text-[2.5rem] font-bold text-accent-primary mb-1">
                 {visibleCategories.length}
               </span>
-              <span className="text-xs text-brand-500 uppercase tracking-widest">Categories</span>
-            </div>
-            <div className="text-center">
-              <span className="block font-heading text-3xl font-bold text-brand-300">
-                {categories.languageCounts.english + categories.languageCounts.telugu > 0
-                  ? '2'
-                  : '1'}
+              <span className="text-[0.85rem] text-text-tertiary uppercase tracking-[1.5px]">
+                Categories
               </span>
-              <span className="text-xs text-brand-500 uppercase tracking-widest">Languages</span>
+            </div>
+            <div className="bg-bg-tertiary p-6 border border-border-light rounded text-center
+                          transition-all duration-300 hover:-translate-y-1 hover:shadow-card hover:border-accent-light">
+              <span className="block font-heading text-[2.5rem] font-bold text-accent-primary mb-1">
+                {visibleCategories.reduce((sum, c) => sum + c.subcategories.filter(s => s.videoCount > 0).length, 0)}
+              </span>
+              <span className="text-[0.85rem] text-text-tertiary uppercase tracking-[1.5px]">
+                Sub-sections
+              </span>
             </div>
           </div>
         )}
 
-        <div className="mt-6">
+        <div className="mt-8">
           <a
             href={CHANNEL_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-brand-400 hover:text-brand-300 transition-colors"
+            className="inline-block px-8 py-3 bg-accent-primary text-white rounded
+                       text-sm font-semibold uppercase tracking-wide
+                       hover:bg-accent-secondary hover:-translate-y-0.5 hover:shadow-card
+                       transition-all duration-300"
           >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-            </svg>
             Visit YouTube Channel
           </a>
         </div>
       </section>
 
-      {/* Category Grid */}
+      {/* Browse Categories */}
       <section className="mb-12">
-        <h2 className="font-heading text-2xl font-semibold text-brand-300 mb-6">
+        <h2 className="font-heading text-[2.25rem] font-semibold text-accent-primary mb-6 pb-4 border-b border-border-medium">
           Browse by Topic
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {visibleCategories.map((cat) => (
             <Link
               key={cat.id}
               href={`/${cat.id}/`}
-              className="group flex items-start gap-4 p-4 bg-brand-800/50 border border-brand-700
-                         rounded-lg hover:border-brand-500 hover:bg-brand-800 transition-all"
+              className="group flex items-start gap-4 p-5 bg-bg-tertiary border border-border-light rounded
+                         transition-all duration-300 hover:-translate-y-1 hover:shadow-card hover:border-accent-light"
             >
-              <span className="text-2xl shrink-0 mt-0.5">{cat.icon}</span>
-              <div className="min-w-0">
-                <h3 className="font-heading text-base font-medium text-brand-200 group-hover:text-brand-300 transition-colors">
+              <span className="text-3xl shrink-0">{cat.icon}</span>
+              <div className="min-w-0 flex-1">
+                <h3 className="font-heading text-[1.15rem] font-semibold text-text-primary group-hover:text-accent-primary transition-colors mb-1">
                   {cat.name}
                 </h3>
-                <p className="text-xs text-brand-500 mt-1">
-                  {cat.videoCount} videos &middot;{' '}
-                  {cat.subcategories.filter((s) => s.videoCount > 0).length} subcategories
+                <p className="text-[0.85rem] text-text-tertiary">
+                  {cat.videoCount.toLocaleString()} videos &middot;{' '}
+                  {cat.subcategories.filter((s) => s.videoCount > 0).length} sections
                 </p>
               </div>
             </Link>
@@ -118,13 +134,15 @@ export default function HomePage() {
 
       {/* Recent Videos */}
       {recentVideos.length > 0 && (
-        <section>
-          <h2 className="font-heading text-2xl font-semibold text-brand-300 mb-6">
+        <section className="mb-12">
+          <h2 className="font-heading text-[2.25rem] font-semibold text-accent-primary mb-6 pb-4 border-b border-border-medium">
             Recently Added
           </h2>
           <VideoGrid videos={recentVideos.slice(0, 12)} />
         </section>
       )}
+
+      <Footer />
     </div>
   );
 }
