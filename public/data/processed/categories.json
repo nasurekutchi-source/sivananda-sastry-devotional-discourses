@@ -1,0 +1,389 @@
+{
+  "categories": [
+    {
+      "id": "epics",
+      "name": "Epics (Itihasas)",
+      "icon": "🏛️",
+      "videoCount": 103,
+      "subcategories": [
+        {
+          "id": "bhagavad-gita",
+          "name": "Bhagavad Gita",
+          "slug": "epics/bhagavad-gita",
+          "videoCount": 49
+        },
+        {
+          "id": "ramayana",
+          "name": "Ramayana",
+          "slug": "epics/ramayana",
+          "videoCount": 33
+        },
+        {
+          "id": "mahabharata",
+          "name": "Mahabharata",
+          "slug": "epics/mahabharata",
+          "videoCount": 21
+        }
+      ]
+    },
+    {
+      "id": "vedic-texts",
+      "name": "Vedic Texts",
+      "icon": "🔱",
+      "videoCount": 17,
+      "subcategories": [
+        {
+          "id": "rig-veda",
+          "name": "Rig Veda",
+          "slug": "vedic-texts/rig-veda",
+          "videoCount": 0
+        },
+        {
+          "id": "yajur-veda",
+          "name": "Yajur Veda",
+          "slug": "vedic-texts/yajur-veda",
+          "videoCount": 4
+        },
+        {
+          "id": "sama-veda",
+          "name": "Sama Veda",
+          "slug": "vedic-texts/sama-veda",
+          "videoCount": 4
+        },
+        {
+          "id": "atharva-veda",
+          "name": "Atharva Veda",
+          "slug": "vedic-texts/atharva-veda",
+          "videoCount": 0
+        },
+        {
+          "id": "vedic-chanting",
+          "name": "Vedic Chanting",
+          "slug": "vedic-texts/vedic-chanting",
+          "videoCount": 9
+        }
+      ]
+    },
+    {
+      "id": "upanishads",
+      "name": "Upanishads",
+      "icon": "🕉️",
+      "videoCount": 21,
+      "subcategories": [
+        {
+          "id": "isha-upanishad",
+          "name": "Isha Upanishad",
+          "slug": "upanishads/isha-upanishad",
+          "videoCount": 4
+        },
+        {
+          "id": "kena-upanishad",
+          "name": "Kena Upanishad",
+          "slug": "upanishads/kena-upanishad",
+          "videoCount": 4
+        },
+        {
+          "id": "katha-upanishad",
+          "name": "Katha Upanishad",
+          "slug": "upanishads/katha-upanishad",
+          "videoCount": 4
+        },
+        {
+          "id": "mandukya-upanishad",
+          "name": "Mandukya Upanishad",
+          "slug": "upanishads/mandukya-upanishad",
+          "videoCount": 4
+        },
+        {
+          "id": "chandogya-upanishad",
+          "name": "Chandogya Upanishad",
+          "slug": "upanishads/chandogya-upanishad",
+          "videoCount": 4
+        },
+        {
+          "id": "brihadaranyaka",
+          "name": "Brihadaranyaka Upanishad",
+          "slug": "upanishads/brihadaranyaka",
+          "videoCount": 0
+        },
+        {
+          "id": "mundaka-upanishad",
+          "name": "Mundaka Upanishad",
+          "slug": "upanishads/mundaka-upanishad",
+          "videoCount": 0
+        },
+        {
+          "id": "taittiriya-upanishad",
+          "name": "Taittiriya Upanishad",
+          "slug": "upanishads/taittiriya-upanishad",
+          "videoCount": 0
+        },
+        {
+          "id": "other-upanishads",
+          "name": "Other Upanishads",
+          "slug": "upanishads/other-upanishads",
+          "videoCount": 1
+        }
+      ]
+    },
+    {
+      "id": "puranas",
+      "name": "Puranas",
+      "icon": "📜",
+      "videoCount": 21,
+      "subcategories": [
+        {
+          "id": "bhagavata-purana",
+          "name": "Bhagavata Purana",
+          "slug": "puranas/bhagavata-purana",
+          "videoCount": 9
+        },
+        {
+          "id": "vishnu-purana",
+          "name": "Vishnu Purana",
+          "slug": "puranas/vishnu-purana",
+          "videoCount": 4
+        },
+        {
+          "id": "shiva-purana",
+          "name": "Shiva Purana",
+          "slug": "puranas/shiva-purana",
+          "videoCount": 4
+        },
+        {
+          "id": "devi-bhagavata",
+          "name": "Devi Bhagavata",
+          "slug": "puranas/devi-bhagavata",
+          "videoCount": 0
+        },
+        {
+          "id": "garuda-purana",
+          "name": "Garuda Purana",
+          "slug": "puranas/garuda-purana",
+          "videoCount": 4
+        },
+        {
+          "id": "skanda-purana",
+          "name": "Skanda Purana",
+          "slug": "puranas/skanda-purana",
+          "videoCount": 0
+        },
+        {
+          "id": "other-puranas",
+          "name": "Other Puranas",
+          "slug": "puranas/other-puranas",
+          "videoCount": 0
+        }
+      ]
+    },
+    {
+      "id": "devotional",
+      "name": "Stotras & Hymns",
+      "icon": "🙏",
+      "videoCount": 27,
+      "subcategories": [
+        {
+          "id": "vishnu-stotras",
+          "name": "Vishnu / Narayana Stotras",
+          "slug": "devotional/vishnu-stotras",
+          "videoCount": 5
+        },
+        {
+          "id": "shiva-stotras",
+          "name": "Shiva Stotras",
+          "slug": "devotional/shiva-stotras",
+          "videoCount": 7
+        },
+        {
+          "id": "devi-stotras",
+          "name": "Devi / Shakti Stotras",
+          "slug": "devotional/devi-stotras",
+          "videoCount": 2
+        },
+        {
+          "id": "hanuman-stotras",
+          "name": "Hanuman Stotras",
+          "slug": "devotional/hanuman-stotras",
+          "videoCount": 10
+        },
+        {
+          "id": "ganesha-stotras",
+          "name": "Ganesha Stotras",
+          "slug": "devotional/ganesha-stotras",
+          "videoCount": 2
+        },
+        {
+          "id": "other-stotras",
+          "name": "Other Stotras & Hymns",
+          "slug": "devotional/other-stotras",
+          "videoCount": 1
+        }
+      ]
+    },
+    {
+      "id": "philosophy",
+      "name": "Philosophy",
+      "icon": "🌟",
+      "videoCount": 7,
+      "subcategories": [
+        {
+          "id": "advaita-vedanta",
+          "name": "Advaita Vedanta",
+          "slug": "philosophy/advaita-vedanta",
+          "videoCount": 5
+        },
+        {
+          "id": "vishishtadvaita",
+          "name": "Vishishtadvaita",
+          "slug": "philosophy/vishishtadvaita",
+          "videoCount": 1
+        },
+        {
+          "id": "dvaita",
+          "name": "Dvaita",
+          "slug": "philosophy/dvaita",
+          "videoCount": 0
+        },
+        {
+          "id": "general-philosophy",
+          "name": "General Philosophy",
+          "slug": "philosophy/general-philosophy",
+          "videoCount": 1
+        }
+      ]
+    },
+    {
+      "id": "yoga-meditation",
+      "name": "Yoga & Meditation",
+      "icon": "🧘",
+      "videoCount": 47,
+      "subcategories": [
+        {
+          "id": "yoga",
+          "name": "Yoga",
+          "slug": "yoga-meditation/yoga",
+          "videoCount": 42
+        },
+        {
+          "id": "pranayama",
+          "name": "Pranayama",
+          "slug": "yoga-meditation/pranayama",
+          "videoCount": 0
+        },
+        {
+          "id": "meditation",
+          "name": "Meditation",
+          "slug": "yoga-meditation/meditation",
+          "videoCount": 5
+        }
+      ]
+    },
+    {
+      "id": "festivals-rituals",
+      "name": "Festivals & Rituals",
+      "icon": "🪔",
+      "videoCount": 6,
+      "subcategories": [
+        {
+          "id": "hindu-festivals",
+          "name": "Hindu Festivals",
+          "slug": "festivals-rituals/hindu-festivals",
+          "videoCount": 5
+        },
+        {
+          "id": "rituals-pujas",
+          "name": "Rituals & Pujas",
+          "slug": "festivals-rituals/rituals-pujas",
+          "videoCount": 1
+        },
+        {
+          "id": "samskaras",
+          "name": "Samskaras",
+          "slug": "festivals-rituals/samskaras",
+          "videoCount": 0
+        }
+      ]
+    },
+    {
+      "id": "devotional-music",
+      "name": "Devotional Music",
+      "icon": "🎵",
+      "videoCount": 3,
+      "subcategories": [
+        {
+          "id": "bhajans-kirtans",
+          "name": "Bhajans & Kirtans",
+          "slug": "devotional-music/bhajans-kirtans",
+          "videoCount": 2
+        },
+        {
+          "id": "classical-renditions",
+          "name": "Classical Renditions",
+          "slug": "devotional-music/classical-renditions",
+          "videoCount": 1
+        }
+      ]
+    },
+    {
+      "id": "sanskrit",
+      "name": "Sanskrit Literature",
+      "icon": "✍️",
+      "videoCount": 2,
+      "subcategories": [
+        {
+          "id": "sanskrit-learning",
+          "name": "Sanskrit Learning",
+          "slug": "sanskrit/sanskrit-learning",
+          "videoCount": 1
+        },
+        {
+          "id": "kavya",
+          "name": "Kavya (Poetry)",
+          "slug": "sanskrit/kavya",
+          "videoCount": 1
+        }
+      ]
+    },
+    {
+      "id": "discourses",
+      "name": "Spiritual Discourses",
+      "icon": "💭",
+      "videoCount": 10,
+      "subcategories": [
+        {
+          "id": "pravachana",
+          "name": "Pravachana (Discourses)",
+          "slug": "discourses/pravachana",
+          "videoCount": 3
+        },
+        {
+          "id": "commentaries",
+          "name": "Commentaries",
+          "slug": "discourses/commentaries",
+          "videoCount": 7
+        }
+      ]
+    },
+    {
+      "id": "general",
+      "name": "General Teachings",
+      "icon": "📚",
+      "videoCount": 0,
+      "subcategories": [
+        {
+          "id": "other",
+          "name": "Other Videos",
+          "slug": "general/other",
+          "videoCount": 0
+        }
+      ]
+    }
+  ],
+  "totalVideos": 264,
+  "lastUpdated": "2026-02-14T13:55:08.920Z",
+  "languageCounts": {
+    "english": 253,
+    "telugu": 11,
+    "mixed": 0
+  }
+}

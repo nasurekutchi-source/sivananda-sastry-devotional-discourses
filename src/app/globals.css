@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-brand-950 text-brand-100 font-body;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-brand-950;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-brand-700 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-brand-500;
+  }
+}
+
+@layer components {
+  .sidebar-link {
+    @apply block px-3 py-1.5 text-sm text-brand-200 rounded-md
+           hover:bg-brand-800 hover:text-brand-300 transition-colors;
+  }
+
+  .sidebar-link-active {
+    @apply bg-brand-800/60 text-brand-300 font-medium;
+  }
+
+  .category-badge {
+    @apply inline-flex items-center px-2 py-0.5 text-xs rounded-full
+           bg-brand-800 text-brand-300 border border-brand-700;
+  }
+
+  .lang-badge {
+    @apply inline-flex items-center justify-center w-6 h-6 text-[10px] font-bold
+           rounded-full uppercase tracking-wider;
+  }
+
+  .lang-badge-en {
+    @apply bg-blue-900/50 text-blue-300 border border-blue-800;
+  }
+
+  .lang-badge-te {
+    @apply bg-emerald-900/50 text-emerald-300 border border-emerald-800;
+  }
+
+  .lang-badge-mx {
+    @apply bg-purple-900/50 text-purple-300 border border-purple-800;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-300 to-brand-400;
+  }
+}
