@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useMemo, Suspense } from 'react';
+import { useEffect, useState, useMemo, useCallback, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { VideoGrid } from '@/components/video/VideoGrid';
 import { Pagination } from '@/components/ui/Pagination';
@@ -25,25 +25,29 @@ function SearchContent() {
     fetch(`${basePath}/data/processed/categories.json`)
       .then((r) => r.json())
       .then(async (cats: CategoriesData) => {
-        const videos: CompactVideo[] = [];
-        const seen = new Set<string>();
-
+        // Build list of all subcategory file URLs
+        const fetches: Promise<CompactVideo[]>[] = [];
         for (const cat of cats.categories) {
           for (const sub of cat.subcategories) {
             if (sub.videoCount === 0) continue;
-            try {
-              const res = await fetch(
-                `${basePath}/data/processed/videos-by-category/${sub.id}.json`
-              );
-              const data = await res.json();
-              for (const v of data.videos) {
-                if (!seen.has(v.id)) {
-                  seen.add(v.id);
-                  videos.push(v);
-                }
-              }
-            } catch {
-              // skip failed loads
+            fetches.push(
+              fetch(`${basePath}/data/processed/videos-by-category/${cat.id}/${sub.id}.json`)
+                .then((r) => r.json())
+                .then((d) => d.videos as CompactVideo[])
+                .catch(() => [] as CompactVideo[])
+            );
+          }
+        }
+
+        // Load all in parallel
+        const allResults = await Promise.all(fetches);
+        const videos: CompactVideo[] = [];
+        const seen = new Set<string>();
+        for (const vids of allResults) {
+          for (const v of vids) {
+            if (!seen.has(v.id)) {
+              seen.add(v.id);
+              videos.push(v);
             }
           }
         }
@@ -62,8 +66,7 @@ function SearchContent() {
     if (!query) return [];
     const q = query.toLowerCase();
     let filtered = allVideos.filter(
-      (v) =>
-        v.t.toLowerCase().includes(q) || v.d.toLowerCase().includes(q)
+      (v) => v.t.toLowerCase().includes(q)
     );
     if (langFilter !== 'all') {
       filtered = filtered.filter((v) => v.l === langFilter);
@@ -74,11 +77,13 @@ function SearchContent() {
   const langCounts = useMemo(() => {
     const q = query.toLowerCase();
     const matched = allVideos.filter(
-      (v) => v.t.toLowerCase().includes(q) || v.d.toLowerCase().includes(q)
+      (v) => v.t.toLowerCase().includes(q)
     );
-    const counts = { english: 0, telugu: 0, mixed: 0, all: matched.length };
+    const counts = { en: 0, te: 0, mx: 0, all: matched.length };
     for (const v of matched) {
-      counts[v.l]++;
+      if (v.l === 'en') counts.en++;
+      else if (v.l === 'te') counts.te++;
+      else if (v.l === 'mx') counts.mx++;
     }
     return counts;
   }, [allVideos, query]);
@@ -88,6 +93,11 @@ function SearchContent() {
     (currentPage - 1) * VIDEOS_PER_PAGE,
     currentPage * VIDEOS_PER_PAGE
   );
+
+  const handlePageChange = useCallback((page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   if (loading) return <LoadingSpinner />;
 
@@ -106,7 +116,7 @@ function SearchContent() {
           )}
         </div>
 
-        {langCounts.all > 0 && (langCounts.english > 0 && langCounts.telugu > 0) && (
+        {langCounts.all > 0 && (langCounts.en > 0 && langCounts.te > 0) && (
           <LanguageToggle
             value={langFilter}
             onChange={setLangFilter}
@@ -126,7 +136,7 @@ function SearchContent() {
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}
-            onPageChange={setCurrentPage}
+            onPageChange={handlePageChange}
           />
         </>
       )}

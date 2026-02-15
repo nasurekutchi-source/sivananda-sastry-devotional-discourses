@@ -65,9 +65,9 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           href="/"
           className={`nav-item ${pathname === '/' ? 'nav-item-active' : ''}`}
         >
-          <span className="text-lg shrink-0">🙏</span>
+          <span className="text-lg shrink-0">🏠</span>
           <span className="font-heading text-[1.05rem] font-medium text-text-primary relative z-[1]">
-            About
+            Home
           </span>
         </Link>
 

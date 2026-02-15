@@ -32,19 +32,18 @@ jobs:
           node-version: 22
           cache: npm
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
       - run: npm ci
 
       # Refresh video data from YouTube (only if API key is configured)
       - name: Fetch & categorize videos
-        if: env.YOUTUBE_API_KEY != ''
-        run: npx tsx scripts/pipeline.ts
-        env:
-          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-
-      # If no API key, generate sample data (for first deploy/testing)
-      - name: Generate sample data (fallback)
-        if: env.YOUTUBE_API_KEY == ''
-        run: npx tsx scripts/generate-sample-data.ts
+        if: ${{ secrets.YOUTUBE_API_KEY != '' }}
+        run: |
+          python scripts/fetch-and-categorize.py
+          python scripts/generate-data.py
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
 

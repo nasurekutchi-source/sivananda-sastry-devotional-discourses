@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { VideoGrid } from '@/components/video/VideoGrid';
@@ -8,6 +8,8 @@ import { Pagination } from '@/components/ui/Pagination';
 import { LanguageToggle } from '@/components/ui/LanguageToggle';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
+import { DecorativeMotif } from '@/components/ui/DecorativeMotif';
+import { getCategoryTheme } from '@/lib/categoryThemes';
 import { VIDEOS_PER_PAGE } from '@/lib/constants';
 import type { CategoriesData, CompactVideo, Language } from '@/lib/types';
 
@@ -28,7 +30,7 @@ export default function SubcategoryClient() {
     const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
     Promise.all([
       fetch(`${basePath}/data/processed/categories.json`).then((r) => r.json()),
-      fetch(`${basePath}/data/processed/videos-by-category/${subcategoryId}.json`)
+      fetch(`${basePath}/data/processed/videos-by-category/${categoryId}/${subcategoryId}.json`)
         .then((r) => r.json())
         .then((d) => d.videos as CompactVideo[]),
     ])
@@ -38,7 +40,7 @@ export default function SubcategoryClient() {
       })
       .catch(() => {})
       .finally(() => setLoading(false));
-  }, [subcategoryId]);
+  }, [categoryId, subcategoryId]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -46,6 +48,7 @@ export default function SubcategoryClient() {
 
   const category = categoriesData?.categories.find((c) => c.id === categoryId);
   const subcategory = category?.subcategories.find((s) => s.id === subcategoryId);
+  const theme = getCategoryTheme(categoryId);
 
   const filteredVideos = useMemo(() => {
     if (langFilter === 'all') return videos;
@@ -53,12 +56,19 @@ export default function SubcategoryClient() {
   }, [videos, langFilter]);
 
   const langCounts = useMemo(() => {
-    const counts = { english: 0, telugu: 0, mixed: 0, all: videos.length };
+    const counts = { en: 0, te: 0, mx: 0, all: videos.length };
     for (const v of videos) {
-      counts[v.l]++;
+      if (v.l === 'en') counts.en++;
+      else if (v.l === 'te') counts.te++;
+      else if (v.l === 'mx') counts.mx++;
     }
     return counts;
   }, [videos]);
+
+  const handlePageChange = useCallback((page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const totalPages = Math.ceil(filteredVideos.length / VIDEOS_PER_PAGE);
   const pageVideos = filteredVideos.slice(
@@ -80,7 +90,7 @@ export default function SubcategoryClient() {
   }
 
   return (
-    <div>
+    <div className="animate-fade-in-up">
       <Breadcrumbs
         items={[
           { label: category.name, href: `/${category.id}/` },
@@ -88,13 +98,24 @@ export default function SubcategoryClient() {
         ]}
       />
 
-      <div className="flex items-center gap-4 mb-6 pb-6 border-b border-border-medium">
-        <span className="text-[3rem] text-accent-primary">{category.icon}</span>
-        <div className="flex-1">
-          <h1 className="font-heading text-[2.25rem] font-semibold text-accent-primary">
-            {subcategory.name}
-          </h1>
-          <p className="text-[0.95rem] text-text-tertiary mt-1">
+      {/* Themed header */}
+      <div className="relative overflow-hidden rounded-lg mb-8" style={{ background: theme.gradient }}>
+        {/* Small decorative motif */}
+        <div className="absolute right-3 top-1/2 -translate-y-1/2 w-24 h-24 md:w-32 md:h-32 opacity-20">
+          <DecorativeMotif type={theme.motif} color={theme.textColor} />
+        </div>
+
+        <div className="relative z-10 px-6 py-6 md:px-10 md:py-8">
+          <div className="flex items-center gap-3 mb-2">
+            <span className="text-2xl md:text-3xl">{category.icon}</span>
+            <h1
+              className="font-heading text-2xl md:text-[2rem] font-bold"
+              style={{ color: theme.textColor }}
+            >
+              {subcategory.name === 'General' ? 'Other Videos' : subcategory.name}
+            </h1>
+          </div>
+          <p className="text-sm opacity-80" style={{ color: theme.textColor }}>
             {filteredVideos.length} videos
             {langFilter !== 'all' && ` (filtered from ${videos.length})`}
             {totalPages > 1 && ` · Page ${currentPage} of ${totalPages}`}
@@ -102,8 +123,9 @@ export default function SubcategoryClient() {
         </div>
       </div>
 
-      {(langCounts.english > 0 && langCounts.telugu > 0) && (
-        <div className="mb-8 p-5 bg-bg-secondary border border-border-light rounded">
+      {/* Language filter */}
+      {(langCounts.en > 0 && langCounts.te > 0) && (
+        <div className="mb-8 p-5 bg-bg-secondary border border-border-light rounded-lg">
           <span className="block text-[0.8rem] text-accent-primary uppercase tracking-[1.5px] font-semibold mb-3">
             Filter by Language
           </span>
@@ -120,7 +142,7 @@ export default function SubcategoryClient() {
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
-        onPageChange={setCurrentPage}
+        onPageChange={handlePageChange}
       />
     </div>
   );

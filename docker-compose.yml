@@ -3,17 +3,5 @@ services:
     build: .
     ports:
       - "3200:3000"
-    volumes:
-      - .:/app
-      - /app/node_modules
-      - ./next.config.ts:/app/next.config.ts
-      - ./tailwind.config.ts:/app/tailwind.config.ts
-      - ./postcss.config.js:/app/postcss.config.js
-      - ./tsconfig.json:/app/tsconfig.json
     environment:
-      - WATCHPACK_POLLING=true
       - NEXT_TELEMETRY_DISABLED=1
-      - YOUTUBE_API_KEY=${YOUTUBE_API_KEY:-}
-      - NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH:-}
-    stdin_open: true
-    tty: true

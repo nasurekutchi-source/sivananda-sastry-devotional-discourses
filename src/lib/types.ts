@@ -1,31 +1,20 @@
-export type Language = 'english' | 'telugu' | 'mixed';
-
-export interface Video {
-  id: string;
-  title: string;
-  description: string;
-  publishedAt: string;
-  thumbnail: string;
-  language: Language;
-  categories: string[];
-}
+export type Language = 'en' | 'te' | 'mx';
 
 /** Compact video format used in split JSON files to minimize file size */
 export interface CompactVideo {
   id: string;
   t: string;   // title
-  d: string;   // description (truncated)
   p: string;   // publishedAt (YYYY-MM-DD)
   th: string;  // thumbnail URL
-  l: Language;  // language
+  l: Language;  // language: en=english, te=telugu, mx=mixed
+  c?: string;  // category slug (only in recent.json)
+  s?: string;  // subcategory slug (only in recent.json)
 }
 
 export interface Subcategory {
   id: string;
   name: string;
-  slug: string;
   videoCount: number;
-  icon?: string;
 }
 
 export interface Category {
@@ -37,14 +26,16 @@ export interface Category {
 }
 
 export interface CategoriesData {
-  categories: Category[];
   totalVideos: number;
-  lastUpdated: string;
-  languageCounts: {
-    english: number;
-    telugu: number;
-    mixed: number;
-  };
+  categories: Category[];
+}
+
+export interface SubcategoryDataFile {
+  category: string;
+  categoryName: string;
+  subcategory: string;
+  subcategoryName: string;
+  videos: CompactVideo[];
 }
 
 export interface StatsData {
@@ -57,11 +48,4 @@ export interface StatsData {
     mixed: number;
   };
   lastUpdated: string;
-  channelUrl: string;
-}
-
-export interface SubcategoryDataFile {
-  subcategoryId: string;
-  categoryId: string;
-  videos: CompactVideo[];
 }

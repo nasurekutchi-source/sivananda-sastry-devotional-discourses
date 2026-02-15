@@ -3,13 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack --hostname 0.0.0.0",
+    "dev": "next dev --hostname 0.0.0.0",
     "build": "npm run data:copy && next build",
     "start": "next start",
     "lint": "next lint",
-    "data:fetch": "tsx scripts/pipeline.ts",
-    "data:copy": "node scripts/copy-data.js",
-    "data:generate-sample": "tsx scripts/generate-sample-data.ts"
+    "data:fetch": "python scripts/fetch-and-categorize.py && python scripts/generate-data.py",
+    "data:copy": "node scripts/copy-data.js"
   },
   "dependencies": {
     "flexsearch": "^0.7.43",

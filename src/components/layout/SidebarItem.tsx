@@ -45,7 +45,7 @@ export function SidebarItem({ category, currentPath }: SidebarItemProps) {
 
       <div
         className={`overflow-hidden transition-all duration-300 ${
-          expanded ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'
+          expanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
         <div className="ml-9 pl-4 border-l border-border-light space-y-0.5 py-1">
@@ -64,8 +64,8 @@ export function SidebarItem({ category, currentPath }: SidebarItemProps) {
           )}
 
           {visibleSubs.map((sub) => {
-            const subPath = `/${sub.slug}/`;
-            const isActive = currentPath === `/${sub.slug}` || currentPath === subPath;
+            const subPath = `/${category.id}/${sub.id}/`;
+            const isActive = currentPath === `/${category.id}/${sub.id}` || currentPath === subPath;
 
             return (
               <Link
@@ -78,7 +78,7 @@ export function SidebarItem({ category, currentPath }: SidebarItemProps) {
                     : 'text-text-secondary hover:bg-accent-light/30 hover:text-accent-primary'
                 }`}
               >
-                <span className="truncate">{sub.name}</span>
+                <span className="truncate">{sub.name === 'General' ? 'Other Videos' : sub.name}</span>
                 <span className="text-[0.7rem] text-text-tertiary tabular-nums ml-2">
                   {sub.videoCount}
                 </span>

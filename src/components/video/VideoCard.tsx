@@ -21,10 +21,10 @@ function formatDate(dateStr: string): string {
 }
 
 function LanguageBadge({ lang }: { lang: string }) {
-  if (lang === 'telugu') {
+  if (lang === 'te') {
     return <span className="lang-badge lang-badge-te">TE</span>;
   }
-  if (lang === 'mixed') {
+  if (lang === 'mx') {
     return <span className="lang-badge lang-badge-mx">MX</span>;
   }
   return <span className="lang-badge lang-badge-en">EN</span>;
@@ -70,11 +70,6 @@ export function VideoCard({ video }: VideoCardProps) {
         <h3 className="font-heading text-[1.15rem] font-semibold text-text-primary leading-[1.4] line-clamp-2 mb-2">
           {video.t}
         </h3>
-        {video.d && (
-          <p className="text-[0.9rem] text-text-tertiary leading-relaxed line-clamp-2 mb-3">
-            {video.d}
-          </p>
-        )}
         <p className="text-[0.8rem] text-text-tertiary tracking-wide">
           {formatDate(video.p)}
         </p>
