@@ -1,11 +1,11 @@
 {
-  "totalVideos": 10961,
+  "totalVideos": 10962,
   "categories": [
     {
       "id": "srimadbhagavatam",
       "name": "Srimadbhagavatam",
       "icon": "📖",
-      "videoCount": 2781,
+      "videoCount": 2774,
       "subcategories": [
         {
           "id": "prathama-skandha",
@@ -13,54 +13,39 @@
           "videoCount": 70
         },
         {
-          "id": "dvitiya-skandha",
-          "name": "Dvitiya Skandha",
-          "videoCount": 60
-        },
-        {
           "id": "tritiya-skandha",
           "name": "Tritiya Skandha",
-          "videoCount": 222
+          "videoCount": 1
         },
         {
           "id": "chaturtha-skandha",
           "name": "Chaturtha Skandha",
-          "videoCount": 236
+          "videoCount": 232
         },
         {
           "id": "panchama-skandha",
           "name": "Panchama Skandha",
-          "videoCount": 181
-        },
-        {
-          "id": "shashtha-skandha",
-          "name": "Shashtha Skandha",
-          "videoCount": 190
+          "videoCount": 183
         },
         {
           "id": "saptama-skandha",
           "name": "Saptama Skandha",
-          "videoCount": 138
+          "videoCount": 136
         },
         {
           "id": "ashtama-skandha",
           "name": "Ashtama Skandha",
-          "videoCount": 70
+          "videoCount": 149
         },
         {
           "id": "navama-skandha",
           "name": "Navama Skandha",
-          "videoCount": 194
+          "videoCount": 130
         },
         {
           "id": "dashama-skandha",
           "name": "Dashama Skandha",
-          "videoCount": 320
-        },
-        {
-          "id": "ekadasha-skandha",
-          "name": "Ekadasha Skandha",
-          "videoCount": 142
+          "videoCount": 95
         },
         {
           "id": "dvadasha-skandha",
@@ -70,7 +55,7 @@
         {
           "id": "general",
           "name": "General",
-          "videoCount": 857
+          "videoCount": 1677
         }
       ]
     },
@@ -78,27 +63,27 @@
       "id": "ramayanam",
       "name": "Ramayanam",
       "icon": "🏹",
-      "videoCount": 2302,
+      "videoCount": 2303,
       "subcategories": [
         {
           "id": "bala-kanda",
           "name": "Bala Kanda",
-          "videoCount": 102
+          "videoCount": 91
         },
         {
           "id": "ayodhya-kanda",
           "name": "Ayodhya Kanda",
-          "videoCount": 284
+          "videoCount": 187
         },
         {
           "id": "aranya-kanda",
           "name": "Aranya Kanda",
-          "videoCount": 116
+          "videoCount": 102
         },
         {
           "id": "kishkindha-kanda",
           "name": "Kishkindha Kanda",
-          "videoCount": 158
+          "videoCount": 156
         },
         {
           "id": "sundara-kanda",
@@ -106,19 +91,14 @@
           "videoCount": 267
         },
         {
-          "id": "yuddha-kanda",
-          "name": "Yuddha Kanda",
-          "videoCount": 553
-        },
-        {
           "id": "uttara-kanda",
           "name": "Uttara Kanda",
-          "videoCount": 399
+          "videoCount": 288
         },
         {
           "id": "general",
           "name": "General",
-          "videoCount": 423
+          "videoCount": 1212
         }
       ]
     },
@@ -126,7 +106,7 @@
       "id": "mahabharatam",
       "name": "Mahabharatam",
       "icon": "⚔️",
-      "videoCount": 3043,
+      "videoCount": 3028,
       "subcategories": [
         {
           "id": "adi-parva",
@@ -141,22 +121,22 @@
         {
           "id": "vana-parva",
           "name": "Vana Parva",
-          "videoCount": 369
+          "videoCount": 287
         },
         {
           "id": "virata-parva",
           "name": "Virata Parva",
-          "videoCount": 75
+          "videoCount": 4
         },
         {
           "id": "udyoga-parva",
           "name": "Udyoga Parva",
-          "videoCount": 171
+          "videoCount": 2
         },
         {
           "id": "bhishma-parva",
           "name": "Bhishma Parva",
-          "videoCount": 20
+          "videoCount": 9
         },
         {
           "id": "drona-parva",
@@ -166,17 +146,7 @@
         {
           "id": "karna-parva",
           "name": "Karna Parva",
-          "videoCount": 133
-        },
-        {
-          "id": "shalya-parva",
-          "name": "Shalya Parva",
-          "videoCount": 105
-        },
-        {
-          "id": "sauptika-parva",
-          "name": "Sauptika Parva",
-          "videoCount": 33
+          "videoCount": 132
         },
         {
           "id": "stri-parva",
@@ -186,42 +156,17 @@
         {
           "id": "shanti-parva",
           "name": "Shanti Parva",
-          "videoCount": 556
-        },
-        {
-          "id": "anushasana-parva",
-          "name": "Anushasana Parva",
-          "videoCount": 103
-        },
-        {
-          "id": "ashvamedhika-parva",
-          "name": "Ashvamedhika Parva",
-          "videoCount": 49
-        },
-        {
-          "id": "ashramavasika-parva",
-          "name": "Ashramavasika Parva",
-          "videoCount": 22
-        },
-        {
-          "id": "mausala-parva",
-          "name": "Mausala Parva",
-          "videoCount": 10
-        },
-        {
-          "id": "mahaprasthanika-parva",
-          "name": "Mahaprasthanika Parva",
-          "videoCount": 3
+          "videoCount": 555
         },
         {
           "id": "svargarohana-parva",
           "name": "Svargarohana Parva",
-          "videoCount": 4
+          "videoCount": 5
         },
         {
           "id": "general",
           "name": "General",
-          "videoCount": 1010
+          "videoCount": 1654
         }
       ]
     },
@@ -229,7 +174,7 @@
       "id": "bhagavadgeetha",
       "name": "Bhagavadgeetha",
       "icon": "🕉️",
-      "videoCount": 703,
+      "videoCount": 711,
       "subcategories": [
         {
           "id": "chapter-1",
@@ -249,7 +194,7 @@
         {
           "id": "general",
           "name": "General",
-          "videoCount": 671
+          "videoCount": 679
         }
       ]
     },
@@ -257,47 +202,47 @@
       "id": "spiritual-discourses",
       "name": "Spiritual Discourses",
       "icon": "🙏",
-      "videoCount": 2132,
+      "videoCount": 2146,
       "subcategories": [
         {
           "id": "untitled-discourses",
           "name": "Untitled Discourses",
-          "videoCount": 794
+          "videoCount": 775
         },
         {
           "id": "shiva-puranam",
           "name": "Shiva Puranam",
-          "videoCount": 284
-        },
-        {
-          "id": "radio-geetham",
-          "name": "Radio Geetham",
-          "videoCount": 280
+          "videoCount": 285
         },
         {
           "id": "thiruppavai",
           "name": "Thiruppavai",
-          "videoCount": 257
+          "videoCount": 258
         },
         {
-          "id": "magha-puranam",
-          "name": "Magha Puranam",
-          "videoCount": 171
-        },
-        {
-          "id": "karthika-puranam",
-          "name": "Karthika Puranam",
-          "videoCount": 117
+          "id": "radiogeetham",
+          "name": "Radiogeetham",
+          "videoCount": 245
         },
         {
           "id": "other-discourses",
           "name": "Other Discourses",
-          "videoCount": 61
+          "videoCount": 181
+        },
+        {
+          "id": "magha-puranam",
+          "name": "Magha Puranam",
+          "videoCount": 143
+        },
+        {
+          "id": "karthikapuranam",
+          "name": "Karthikapuranam",
+          "videoCount": 66
         },
         {
           "id": "shastipoorthi",
           "name": "Shastipoorthi",
-          "videoCount": 45
+          "videoCount": 40
         },
         {
           "id": "goda-kalyanam",
@@ -305,24 +250,54 @@
           "videoCount": 37
         },
         {
-          "id": "sri-rama-navami",
-          "name": "Sri Rama Navami",
-          "videoCount": 28
+          "id": "maagha-puraanam",
+          "name": "maagha puraanam",
+          "videoCount": 25
         },
         {
-          "id": "temple-events",
-          "name": "Temple Events",
-          "videoCount": 21
+          "id": "radiogeetam",
+          "name": "radiogeetam",
+          "videoCount": 20
         },
         {
-          "id": "satsangam",
-          "name": "Satsangam",
-          "videoCount": 17
+          "id": "sriramanavami-celebrations",
+          "name": "Sriramanavami celebrations",
+          "videoCount": 16
         },
         {
-          "id": "guru-pournima",
-          "name": "Guru Pournima",
+          "id": "kaartheeka-puraanam",
+          "name": "Kaartheeka puraanam",
+          "videoCount": 15
+        },
+        {
+          "id": "gurupournima-celebrations",
+          "name": "Gurupournima celebrations",
           "videoCount": 8
+        },
+        {
+          "id": "8-2022",
+          "name": "8 జనవరి, 2022",
+          "videoCount": 5
+        },
+        {
+          "id": "radio-geetham",
+          "name": "Radio geetham",
+          "videoCount": 5
+        },
+        {
+          "id": "sriramanavami-celebrations-5-4-2017",
+          "name": "Sriramanavami celebrations 5/4/2017",
+          "videoCount": 5
+        },
+        {
+          "id": "19-2021",
+          "name": "19 ఏప్రిల్, 2021",
+          "videoCount": 4
+        },
+        {
+          "id": "kaartheeka-puraanam",
+          "name": "kaartheeka puraanam",
+          "videoCount": 4
         },
         {
           "id": "dhanurmasavratam",
@@ -330,18 +305,13 @@
           "videoCount": 3
         },
         {
-          "id": "guru-charitra",
-          "name": "Guru Charitra",
+          "id": "maagha-puraanam",
+          "name": "Maagha puraanam",
           "videoCount": 3
         },
         {
-          "id": "navaratri",
-          "name": "Navaratri",
-          "videoCount": 3
-        },
-        {
-          "id": "sai-charitra",
-          "name": "Sai Charitra",
+          "id": "shastipoorthi-ugraradhasanthi",
+          "name": "Shastipoorthi (ugraradhasanthi )",
           "videoCount": 3
         }
       ]
