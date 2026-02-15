@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import type { Category } from '@/lib/types';
 
 interface SidebarItemProps {
@@ -10,7 +11,14 @@ interface SidebarItemProps {
 }
 
 export function SidebarItem({ category, currentPath }: SidebarItemProps) {
-  const visibleSubs = category.subcategories.filter((s) => s.videoCount > 0);
+  const router = useRouter();
+  const visibleSubs = category.subcategories
+    .filter((s) => s.videoCount > 0)
+    .sort((a, b) => {
+      if (a.id === 'general') return 1;
+      if (b.id === 'general') return -1;
+      return 0;
+    });
   const isInCategory = currentPath.startsWith(`/${category.id}`);
   const [expanded, setExpanded] = useState(isInCategory);
 
@@ -18,30 +26,49 @@ export function SidebarItem({ category, currentPath }: SidebarItemProps) {
     if (isInCategory) setExpanded(true);
   }, [isInCategory]);
 
+  const handleCategoryClick = () => {
+    // Navigate to the category page AND expand
+    setExpanded(true);
+    router.push(`/${category.id}/`);
+  };
+
   return (
     <div>
-      <button
-        onClick={() => setExpanded(!expanded)}
-        className={`nav-item w-full ${isInCategory ? 'nav-item-active' : ''}`}
-      >
-        <span className="text-lg shrink-0">{category.icon}</span>
-        <span className="font-heading text-[1.05rem] font-medium text-text-primary flex-1 text-left relative z-[1]">
-          {category.name}
-        </span>
-        <span className="text-[0.7rem] text-text-tertiary bg-bg-secondary px-2 py-0.5 rounded-xl relative z-[1] tabular-nums">
+      <div className={`nav-item w-full ${isInCategory ? 'nav-item-active' : ''}`}>
+        {/* Clicking category name navigates to category page */}
+        <button
+          onClick={handleCategoryClick}
+          className="flex items-center gap-3 flex-1 min-w-0 text-left cursor-pointer"
+        >
+          <span className="text-lg shrink-0">{category.icon}</span>
+          <span className="font-heading text-[1.05rem] font-medium text-text-primary relative z-[1] truncate">
+            {category.name}
+          </span>
+        </button>
+        <span className="text-[0.7rem] text-text-tertiary bg-bg-secondary px-2 py-0.5 rounded-xl relative z-[1] tabular-nums shrink-0">
           {category.videoCount.toLocaleString()}
         </span>
-        <svg
-          className={`w-3.5 h-3.5 text-text-tertiary transition-transform duration-200 relative z-[1] ${
-            expanded ? 'rotate-90' : ''
-          }`}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
+        {/* Clicking arrow only toggles expand/collapse */}
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            setExpanded(!expanded);
+          }}
+          className="p-1 rounded-md hover:bg-bg-secondary transition-colors relative z-[1] shrink-0 cursor-pointer"
+          aria-label={expanded ? 'Collapse' : 'Expand'}
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
+          <svg
+            className={`w-3.5 h-3.5 text-text-tertiary transition-transform duration-200 ${
+              expanded ? 'rotate-90' : ''
+            }`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
 
       <div
         className={`overflow-hidden transition-all duration-300 ${
@@ -49,20 +76,6 @@ export function SidebarItem({ category, currentPath }: SidebarItemProps) {
         }`}
       >
         <div className="ml-9 pl-4 border-l border-border-light space-y-0.5 py-1">
-          {visibleSubs.length > 1 && (
-            <Link
-              href={`/${category.id}/`}
-              className={`block px-3 py-1.5 text-[0.85rem] text-text-secondary rounded-md
-                         hover:bg-accent-light/40 hover:text-accent-primary transition-colors ${
-                currentPath === `/${category.id}` || currentPath === `/${category.id}/`
-                  ? 'bg-accent-light/40 text-accent-primary font-medium'
-                  : ''
-              }`}
-            >
-              All {category.name}
-            </Link>
-          )}
-
           {visibleSubs.map((sub) => {
             const subPath = `/${category.id}/${sub.id}/`;
             const isActive = currentPath === `/${category.id}/${sub.id}` || currentPath === subPath;

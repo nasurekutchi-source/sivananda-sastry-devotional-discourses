@@ -80,8 +80,12 @@ export default function CategoryClient() {
     );
   }
 
-  // Sort subcategories: largest first for visual impact
-  const sortedSubs = [...visibleSubs].sort((a, b) => b.videoCount - a.videoCount);
+  // Sort subcategories: largest first, but "General" (Other Videos) always at bottom
+  const sortedSubs = [...visibleSubs].sort((a, b) => {
+    if (a.id === 'general') return 1;
+    if (b.id === 'general') return -1;
+    return b.videoCount - a.videoCount;
+  });
   const maxCount = sortedSubs[0]?.videoCount || 1;
 
   return (

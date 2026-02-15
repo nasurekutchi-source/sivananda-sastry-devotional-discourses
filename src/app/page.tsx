@@ -137,9 +137,9 @@ export default function HomePage() {
           {visibleCategories.map((cat) => {
             const theme = getCategoryTheme(cat.id);
             const visibleSubCount = cat.subcategories.filter((s) => s.videoCount > 0).length;
-            // Show top 3 subcategories
+            // Show top 3 subcategories (exclude General/Other Videos)
             const topSubs = cat.subcategories
-              .filter((s) => s.videoCount > 0)
+              .filter((s) => s.videoCount > 0 && s.id !== 'general')
               .sort((a, b) => b.videoCount - a.videoCount)
               .slice(0, 3);
 

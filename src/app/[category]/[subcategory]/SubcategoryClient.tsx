@@ -94,8 +94,13 @@ export default function SubcategoryClient() {
     currentPage * VIDEOS_PER_PAGE
   );
 
-  // Sibling subcategories for quick navigation
-  const siblings = category?.subcategories.filter((s) => s.videoCount > 0 && s.id !== subcategoryId) || [];
+  // Sibling subcategories for quick navigation (General at bottom)
+  const siblings = (category?.subcategories.filter((s) => s.videoCount > 0 && s.id !== subcategoryId) || [])
+    .sort((a, b) => {
+      if (a.id === 'general') return 1;
+      if (b.id === 'general') return -1;
+      return 0;
+    });
 
   if (loading) return <LoadingSpinner />;
 
