@@ -7,7 +7,7 @@ import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 import { DecorativeMotif } from '@/components/ui/DecorativeMotif';
 import { Footer } from '@/components/layout/Footer';
 import { CHANNEL_URL } from '@/lib/constants';
-import { getCategoryTheme } from '@/lib/categoryThemes';
+import { getCategoryTheme, CATEGORY_THEMES } from '@/lib/categoryThemes';
 import type { CategoriesData, CompactVideo } from '@/lib/types';
 
 export default function HomePage() {
@@ -142,6 +142,98 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* The Journey - Timeline */}
+      <section className="mb-12">
+        <div className="flex items-center gap-4 mb-3">
+          <div className="w-10 h-0.5 bg-accent-primary" />
+          <h2 className="font-heading text-2xl font-semibold text-accent-primary">
+            The Journey
+          </h2>
+        </div>
+        <p className="text-sm text-text-secondary leading-relaxed mb-7 ml-14">
+          The journey started with casual <em>satsang</em> and then reciting the Bhagavad Geetha &mdash;
+          it then translated into getting deeper into each of our great epics, and so the journey began.
+        </p>
+
+        <div className="relative ml-14">
+          {/* Vertical line */}
+          <div className="absolute left-[7px] top-2 bottom-2 w-px bg-border-medium" />
+
+          <div className="space-y-4">
+            {(() => {
+              const journeyOrder = [
+                { id: 'spiritual-discourses', label: 'Spiritual Discourses', note: 'Casual satsang, Puranic teachings, festivals & traditions' },
+                { id: 'bhagavadgeetha', label: 'Bhagavad Geetha', note: 'Lord Krishna\u2019s timeless counsel to Arjuna' },
+                { id: 'mahabharatam', label: 'Mahabharatam', note: 'The great epic of Dharma \u2014 18 Parvas of the Kuru dynasty' },
+                { id: 'srimadbhagavatam', label: 'Srimadbhagavatam', note: 'Sacred stories of Lord Vishnu\u2019s divine play' },
+                { id: 'ramayanam', label: 'Ramayanam', note: 'The epic journey of Lord Rama \u2014 7 Kandas' },
+              ];
+
+              return journeyOrder.map((item) => {
+                const theme = getCategoryTheme(item.id);
+                const cat = visibleCategories.find((c) => c.id === item.id);
+                const date = new Date(theme.journeyStarted + 'T00:00:00');
+                const formatted = date.toLocaleDateString('en-IN', { month: 'short', year: 'numeric' });
+
+                return (
+                  <Link
+                    key={item.id}
+                    href={`/${item.id}/`}
+                    className="group relative flex items-start gap-4 pl-6 py-2 rounded-lg hover:bg-bg-secondary/50 transition-colors"
+                  >
+                    {/* Timeline dot */}
+                    <div
+                      className="absolute left-0 top-3.5 w-[15px] h-[15px] rounded-full border-[3px] border-white shadow-sm z-10"
+                      style={{ background: theme.accentColor }}
+                    />
+
+                    {/* Date column */}
+                    <div className="shrink-0 w-[72px] pt-0.5">
+                      <span className="text-xs font-bold text-text-tertiary uppercase tracking-wide">
+                        {formatted}
+                      </span>
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <h3 className="font-heading text-base font-bold text-text-primary group-hover:text-accent-primary transition-colors leading-snug">
+                          {item.label}
+                        </h3>
+                        {cat && (
+                          <span className="text-[0.6rem] font-bold text-text-tertiary bg-bg-secondary px-2 py-0.5 rounded-full">
+                            {cat.videoCount.toLocaleString()}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs text-text-tertiary mt-0.5 leading-relaxed">{item.note}</p>
+                    </div>
+
+                    {/* Arrow on hover */}
+                    <svg className="w-4 h-4 text-text-tertiary shrink-0 mt-1 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                );
+              });
+            })()}
+          </div>
+
+          {/* Journey duration note */}
+          <div className="mt-5 pl-6 flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-accent-primary/40" />
+            <p className="text-[0.7rem] text-text-tertiary italic">
+              {(() => {
+                const start = new Date('2014-10-31T00:00:00');
+                const now = new Date();
+                const years = Math.floor((now.getTime() - start.getTime()) / (365.25 * 24 * 60 * 60 * 1000));
+                return `${years}+ years of preserving sacred teachings as-is (Yadhatadham)`;
+              })()}
+            </p>
           </div>
         </div>
       </section>

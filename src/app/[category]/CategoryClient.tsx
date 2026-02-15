@@ -154,6 +154,15 @@ export default function CategoryClient() {
               </svg>
               {visibleSubs.length} sections
             </span>
+            <span
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold"
+              style={{ backgroundColor: 'rgba(255,255,255,0.15)', color: theme.textColor }}
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              Journey began {new Date(theme.journeyStarted + 'T00:00:00').toLocaleDateString('en-IN', { month: 'long', year: 'numeric' })}
+            </span>
           </div>
         </div>
       </div>
@@ -275,6 +284,35 @@ export default function CategoryClient() {
                   {sortedSubs.length} of {visibleSubs.length} sections
                 </p>
               )}
+            </div>
+
+            {/* Journey info */}
+            <div className="bg-bg-tertiary border border-border-light rounded-xl p-5">
+              <h3 className="text-xs text-text-tertiary uppercase tracking-wider font-bold mb-3">
+                The Journey
+              </h3>
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
+                  style={{ background: theme.gradient }}>
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke={theme.textColor} strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-text-primary">
+                    {new Date(theme.journeyStarted + 'T00:00:00').toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}
+                  </p>
+                  <p className="text-[0.65rem] text-text-tertiary uppercase tracking-wider">Journey Started</p>
+                </div>
+              </div>
+              <p className="text-xs text-text-secondary leading-relaxed">
+                {(() => {
+                  const start = new Date(theme.journeyStarted + 'T00:00:00');
+                  const now = new Date();
+                  const years = Math.floor((now.getTime() - start.getTime()) / (365.25 * 24 * 60 * 60 * 1000));
+                  return `Over ${years} years of dedicated discourses, preserving and sharing these sacred teachings as-is (Yadhatadham).`;
+                })()}
+              </p>
             </div>
 
             {/* Category overview */}

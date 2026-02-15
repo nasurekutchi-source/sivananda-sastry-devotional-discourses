@@ -10,6 +10,7 @@ export interface CategoryTheme {
   accentColor: string;
   motif: 'om' | 'lotus' | 'wheel' | 'flame' | 'mandala';
   description: string;
+  journeyStarted: string; // YYYY-MM-DD
 }
 
 const CATEGORY_THEMES: Record<string, CategoryTheme> = {
@@ -20,6 +21,7 @@ const CATEGORY_THEMES: Record<string, CategoryTheme> = {
     motif: 'om',
     description:
       'Sacred stories of Lord Vishnu\u2019s divine play \u2014 12 Skandhas of cosmic wisdom',
+    journeyStarted: '2015-01-11',
   },
   ramayanam: {
     gradient: 'linear-gradient(135deg, #14532d 0%, #166534 30%, #15803d 60%, #059669 100%)',
@@ -28,6 +30,7 @@ const CATEGORY_THEMES: Record<string, CategoryTheme> = {
     motif: 'lotus',
     description:
       'The epic journey of Lord Rama \u2014 7 Kandas from Bala to Uttara',
+    journeyStarted: '2015-11-12',
   },
   mahabharatam: {
     gradient: 'linear-gradient(135deg, #7f1d1d 0%, #991b1b 30%, #b91c1c 60%, #dc2626 100%)',
@@ -36,6 +39,7 @@ const CATEGORY_THEMES: Record<string, CategoryTheme> = {
     motif: 'wheel',
     description:
       'The great epic of Dharma \u2014 18 Parvas of the Kuru dynasty',
+    journeyStarted: '2014-11-02',
   },
   bhagavadgeetha: {
     gradient: 'linear-gradient(135deg, #78350f 0%, #92400e 30%, #b45309 60%, #d97706 100%)',
@@ -44,6 +48,7 @@ const CATEGORY_THEMES: Record<string, CategoryTheme> = {
     motif: 'flame',
     description:
       'The Song of God \u2014 Lord Krishna\u2019s timeless counsel to Arjuna',
+    journeyStarted: '2014-11-01',
   },
   'spiritual-discourses': {
     gradient: 'linear-gradient(135deg, #3b0764 0%, #581c87 30%, #7e22ce 60%, #9333ea 100%)',
@@ -52,6 +57,7 @@ const CATEGORY_THEMES: Record<string, CategoryTheme> = {
     motif: 'mandala',
     description:
       'Devotional teachings on Puranas, festivals, stotrams and sacred traditions',
+    journeyStarted: '2014-10-31',
   },
 };
 
@@ -61,6 +67,7 @@ const DEFAULT_THEME: CategoryTheme = {
   accentColor: '#d6d3d1',
   motif: 'om',
   description: 'Spiritual teachings and sacred wisdom',
+  journeyStarted: '2014-10-31',
 };
 
 export function getCategoryTheme(categoryId: string): CategoryTheme {
