@@ -16,6 +16,7 @@ export default function CategoryClient() {
   const [categoriesData, setCategoriesData] = useState<CategoriesData | null>(null);
   const [previewVideos, setPreviewVideos] = useState<Record<string, CompactVideo[]>>({});
   const [loading, setLoading] = useState(true);
+  const [nameFilter, setNameFilter] = useState('');
 
   useEffect(() => {
     const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
@@ -81,11 +82,17 @@ export default function CategoryClient() {
   }
 
   // Sort subcategories: largest first, but "General" (Other Videos) always at bottom
-  const sortedSubs = [...visibleSubs].sort((a, b) => {
-    if (a.id === 'general') return 1;
-    if (b.id === 'general') return -1;
-    return b.videoCount - a.videoCount;
-  });
+  const sortedSubs = [...visibleSubs]
+    .filter((s) => {
+      if (!nameFilter.trim()) return true;
+      const display = s.name === 'General' ? 'Other Videos' : s.name;
+      return display.toLowerCase().includes(nameFilter.toLowerCase());
+    })
+    .sort((a, b) => {
+      if (a.id === 'general') return 1;
+      if (b.id === 'general') return -1;
+      return b.videoCount - a.videoCount;
+    });
   const maxCount = sortedSubs[0]?.videoCount || 1;
 
   return (
@@ -242,6 +249,34 @@ export default function CategoryClient() {
         {/* Right sidebar - overview & quick nav */}
         <aside className="hidden lg:block w-[260px] shrink-0">
           <div className="sticky top-8 space-y-6">
+            {/* Search / Filter by name */}
+            <div className="bg-bg-tertiary border border-border-light rounded-xl p-5">
+              <h3 className="text-xs text-text-tertiary uppercase tracking-wider font-bold mb-3">
+                Filter Sections
+              </h3>
+              <div className="relative">
+                <input
+                  type="text"
+                  value={nameFilter}
+                  onChange={(e) => setNameFilter(e.target.value)}
+                  placeholder="Search by name..."
+                  className="w-full px-3 py-2 pr-8 bg-bg-secondary border border-border-medium rounded-lg
+                             text-sm text-text-primary font-body
+                             placeholder:text-text-tertiary
+                             focus:outline-none focus:border-accent-primary/50
+                             transition-all duration-200"
+                />
+                <svg className="absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+              {nameFilter && (
+                <p className="text-xs text-text-tertiary mt-2">
+                  {sortedSubs.length} of {visibleSubs.length} sections
+                </p>
+              )}
+            </div>
+
             {/* Category overview */}
             <div className="bg-bg-tertiary border border-border-light rounded-xl p-5">
               <h3 className="text-xs text-text-tertiary uppercase tracking-wider font-bold mb-4">

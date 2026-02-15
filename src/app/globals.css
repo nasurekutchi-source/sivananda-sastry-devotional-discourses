@@ -33,35 +33,21 @@
 }
 
 @layer components {
-  /* Dark sidebar panel - rich mahogany */
-  .sidebar-panel {
-    background: linear-gradient(180deg, #251c14 0%, #1c1610 40%, #171210 100%);
-  }
-
-  /* Dark sidebar navigation items */
+  /* Sidebar navigation items */
   .sidebar-nav-item {
-    @apply relative flex items-center gap-2.5 px-5 py-2.5 cursor-pointer
-           border-l-2 border-transparent
+    @apply relative flex items-center gap-2 px-4 py-2 cursor-pointer
+           border-l-2 border-transparent rounded-r-md
            transition-all duration-200;
   }
 
-  .sidebar-nav-item::before {
-    content: '';
-    @apply absolute left-0 top-0 h-full w-0 transition-[width] duration-300;
-    background: linear-gradient(90deg, rgba(184, 151, 106, 0.08), transparent);
-  }
-
-  .sidebar-nav-item:hover::before {
-    @apply w-full;
-  }
-
   .sidebar-nav-item:hover {
-    border-left-color: rgba(184, 151, 106, 0.5);
+    @apply bg-[#f0e9de];
+    border-left-color: #c17d4f;
   }
 
   .sidebar-nav-active {
-    border-left-color: #b8976a;
-    background: linear-gradient(90deg, rgba(184, 151, 106, 0.08), transparent);
+    border-left-color: #8b5a3c;
+    @apply bg-[#ede6da];
   }
 
   /* Legacy nav-item (kept for non-sidebar usage) */

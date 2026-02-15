@@ -8,12 +8,11 @@ import { DecorativeMotif } from '@/components/ui/DecorativeMotif';
 import { Footer } from '@/components/layout/Footer';
 import { CHANNEL_URL } from '@/lib/constants';
 import { getCategoryTheme } from '@/lib/categoryThemes';
-import type { CategoriesData, CompactVideo, StatsData } from '@/lib/types';
+import type { CategoriesData, CompactVideo } from '@/lib/types';
 
 export default function HomePage() {
   const [categories, setCategories] = useState<CategoriesData | null>(null);
   const [recentVideos, setRecentVideos] = useState<CompactVideo[]>([]);
-  const [stats, setStats] = useState<StatsData | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -23,12 +22,10 @@ export default function HomePage() {
       fetch(`${basePath}/data/processed/recent.json`)
         .then((r) => r.json())
         .then((d) => d.videos),
-      fetch(`${basePath}/data/processed/stats.json`).then((r) => r.json()),
     ])
-      .then(([cats, recent, s]) => {
+      .then(([cats, recent]) => {
         setCategories(cats);
         setRecentVideos(recent);
-        setStats(s);
       })
       .catch(() => {})
       .finally(() => setLoading(false));
@@ -89,8 +86,8 @@ export default function HomePage() {
                 both scholarly depth and devotional sincerity to every teaching.
               </p>
               <p className="text-sm text-amber-100/50 leading-relaxed mb-6">
-                With over {categories?.totalVideos.toLocaleString() || '10,000'} video discourses in both
-                English and Telugu, this archive represents one of the most comprehensive collections of
+                With over {categories?.totalVideos.toLocaleString() || '10,000'} video discourses delivered
+                in Telugu, this archive represents one of the most comprehensive collections of
                 authentic Vedic and Puranic teachings available today.
               </p>
 
@@ -100,12 +97,7 @@ export default function HomePage() {
                   { value: categories?.totalVideos.toLocaleString() || '0', label: 'Videos' },
                   { value: visibleCategories.length.toString(), label: 'Categories' },
                   { value: totalSubsections.toString(), label: 'Sections' },
-                  ...(stats
-                    ? [
-                        { value: stats.languageCounts.english.toLocaleString(), label: 'English' },
-                        { value: stats.languageCounts.telugu.toLocaleString(), label: 'Telugu' },
-                      ]
-                    : []),
+                  { value: 'Telugu', label: 'Language' },
                 ].map((stat) => (
                   <div
                     key={stat.label}
@@ -162,104 +154,73 @@ export default function HomePage() {
             Browse by Topic
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {visibleCategories
             .sort((a, b) => b.videoCount - a.videoCount)
             .map((cat) => {
               const theme = getCategoryTheme(cat.id);
               const visibleSubCount = cat.subcategories.filter((s) => s.videoCount > 0).length;
-              const pct = Math.round((cat.videoCount / (categories?.totalVideos || 1)) * 100);
               const topSubs = cat.subcategories
                 .filter((s) => s.videoCount > 0 && s.id !== 'general')
                 .sort((a, b) => b.videoCount - a.videoCount)
-                .slice(0, 3);
+                .slice(0, 4);
 
               return (
                 <Link
                   key={cat.id}
                   href={`/${cat.id}/`}
-                  className="group relative block overflow-hidden rounded-xl
-                             transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated"
+                  className="group block rounded-xl border border-border-light bg-white
+                             shadow-subtle hover:shadow-card
+                             transition-all duration-300 hover:-translate-y-1 overflow-hidden"
                 >
-                  <div className="absolute inset-0" style={{ background: theme.gradient }} />
-                  <div className="absolute right-2 top-1/2 -translate-y-1/2 w-28 h-28 opacity-15 group-hover:opacity-25 transition-opacity">
-                    <DecorativeMotif type={theme.motif} color={theme.textColor} />
-                  </div>
+                  {/* Colored top bar */}
+                  <div className="h-1.5" style={{ background: theme.gradient }} />
 
-                  <div className="relative z-10 p-6 md:p-7">
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="text-2xl md:text-3xl drop-shadow-sm">{cat.icon}</span>
+                  <div className="p-5 md:p-6">
+                    <div className="flex items-start justify-between mb-3">
                       <div className="flex-1 min-w-0">
-                        <h3
-                          className="font-heading text-xl md:text-2xl font-bold drop-shadow-sm"
-                          style={{ color: theme.textColor }}
-                        >
+                        <h3 className="font-heading text-xl md:text-[1.4rem] font-bold text-text-primary leading-snug group-hover:text-accent-primary transition-colors">
                           {cat.name}
                         </h3>
-                        <p
-                          className="text-xs mt-0.5 leading-relaxed opacity-60 truncate"
-                          style={{ color: theme.textColor }}
-                        >
+                        <p className="text-[0.75rem] text-text-tertiary mt-1 leading-relaxed">
                           {theme.description}
                         </p>
                       </div>
+                      <span className="shrink-0 ml-4 text-[0.7rem] font-bold text-text-tertiary bg-bg-secondary px-2.5 py-1 rounded-full">
+                        {cat.videoCount.toLocaleString()}
+                      </span>
                     </div>
 
-                    {/* Top subcategories chips */}
+                    {/* Subcategory list */}
                     <div className="flex flex-wrap gap-1.5 mt-3">
                       {topSubs.map((sub) => (
                         <span
                           key={sub.id}
-                          className="inline-flex items-center px-2.5 py-1 rounded-full text-[0.65rem] font-semibold"
-                          style={{ backgroundColor: 'rgba(255,255,255,0.12)', color: theme.textColor }}
+                          className="inline-flex items-center px-2.5 py-1 rounded-md text-[0.65rem] font-semibold
+                                     bg-bg-secondary text-text-secondary border border-border-light"
                         >
                           {sub.name}
-                          <span className="ml-1.5 opacity-60">{sub.videoCount}</span>
+                          <span className="ml-1.5 text-text-tertiary">{sub.videoCount}</span>
                         </span>
                       ))}
-                      {visibleSubCount > 3 && (
-                        <span
-                          className="inline-flex items-center px-2.5 py-1 rounded-full text-[0.65rem] font-semibold opacity-50"
-                          style={{ color: theme.textColor }}
-                        >
-                          +{visibleSubCount - 3} more
+                      {visibleSubCount > 4 && (
+                        <span className="inline-flex items-center px-2.5 py-1 rounded-md text-[0.65rem] font-semibold text-text-tertiary">
+                          +{visibleSubCount - 4} more
                         </span>
                       )}
                     </div>
 
-                    {/* Distribution bar + stats */}
-                    <div className="mt-4">
-                      <div className="h-1.5 rounded-full overflow-hidden" style={{ backgroundColor: 'rgba(255,255,255,0.12)' }}>
-                        <div
-                          className="h-full rounded-full"
-                          style={{ width: `${pct}%`, backgroundColor: 'rgba(255,255,255,0.4)' }}
-                        />
-                      </div>
-                      <div className="flex items-center justify-between mt-2">
-                        <div className="flex items-center gap-3">
-                          <span
-                            className="text-xs font-bold opacity-90"
-                            style={{ color: theme.textColor }}
-                          >
-                            {cat.videoCount.toLocaleString()} videos
-                          </span>
-                          <span
-                            className="text-xs font-bold opacity-50"
-                            style={{ color: theme.textColor }}
-                          >
-                            {pct}% of collection
-                          </span>
-                        </div>
-                        <span
-                          className="inline-flex items-center gap-1 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity"
-                          style={{ color: theme.textColor }}
-                        >
-                          Explore
-                          <svg className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                          </svg>
-                        </span>
-                      </div>
+                    {/* Footer with arrow */}
+                    <div className="flex items-center justify-between mt-4 pt-3 border-t border-border-light">
+                      <span className="text-[0.7rem] text-text-tertiary">
+                        {visibleSubCount} sections
+                      </span>
+                      <span className="inline-flex items-center gap-1 text-xs text-accent-secondary font-semibold group-hover:text-accent-primary transition-colors">
+                        Browse
+                        <svg className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </span>
                     </div>
                   </div>
                 </Link>
