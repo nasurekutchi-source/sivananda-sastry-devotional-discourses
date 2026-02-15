@@ -27,38 +27,35 @@ export function SidebarItem({ category, currentPath }: SidebarItemProps) {
   }, [isInCategory]);
 
   const handleCategoryClick = () => {
-    // Navigate to the category page AND expand
     setExpanded(true);
     router.push(`/${category.id}/`);
   };
 
   return (
     <div>
-      <div className={`nav-item w-full ${isInCategory ? 'nav-item-active' : ''}`}>
-        {/* Clicking category name navigates to category page */}
+      <div className={`sidebar-nav-item w-full ${isInCategory ? 'sidebar-nav-active' : ''}`}>
         <button
           onClick={handleCategoryClick}
           className="flex items-center gap-3 flex-1 min-w-0 text-left cursor-pointer"
         >
           <span className="text-lg shrink-0">{category.icon}</span>
-          <span className="font-heading text-[1.05rem] font-medium text-text-primary relative z-[1] truncate">
+          <span className="font-heading text-[1.05rem] font-medium text-[#d4c4aa] relative z-[1] truncate">
             {category.name}
           </span>
         </button>
-        <span className="text-[0.7rem] text-text-tertiary bg-bg-secondary px-2 py-0.5 rounded-xl relative z-[1] tabular-nums shrink-0">
+        <span className="text-[0.65rem] text-[#9a8b78] bg-[#3d3228] px-2 py-0.5 rounded-full relative z-[1] tabular-nums shrink-0 font-semibold">
           {category.videoCount.toLocaleString()}
         </span>
-        {/* Clicking arrow only toggles expand/collapse */}
         <button
           onClick={(e) => {
             e.stopPropagation();
             setExpanded(!expanded);
           }}
-          className="p-1 rounded-md hover:bg-bg-secondary transition-colors relative z-[1] shrink-0 cursor-pointer"
+          className="p-1 rounded-md hover:bg-[#3d3228] transition-colors relative z-[1] shrink-0 cursor-pointer"
           aria-label={expanded ? 'Collapse' : 'Expand'}
         >
           <svg
-            className={`w-3.5 h-3.5 text-text-tertiary transition-transform duration-200 ${
+            className={`w-3.5 h-3.5 text-[#9a8b78] transition-transform duration-200 ${
               expanded ? 'rotate-90' : ''
             }`}
             fill="none"
@@ -75,7 +72,7 @@ export function SidebarItem({ category, currentPath }: SidebarItemProps) {
           expanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className="ml-9 pl-4 border-l border-border-light space-y-0.5 py-1">
+        <div className="ml-9 pl-4 border-l border-[#3d3228] space-y-0.5 py-1">
           {visibleSubs.map((sub) => {
             const subPath = `/${category.id}/${sub.id}/`;
             const isActive = currentPath === `/${category.id}/${sub.id}` || currentPath === subPath;
@@ -87,12 +84,12 @@ export function SidebarItem({ category, currentPath }: SidebarItemProps) {
                 className={`flex items-center justify-between px-3 py-1.5 text-[0.85rem] rounded-md
                            transition-colors ${
                   isActive
-                    ? 'bg-accent-light/40 text-accent-primary font-medium'
-                    : 'text-text-secondary hover:bg-accent-light/30 hover:text-accent-primary'
+                    ? 'bg-[#c9a96e]/15 text-[#c9a96e] font-medium'
+                    : 'text-[#9a8b78] hover:bg-[#3d3228]/60 hover:text-[#d4c4aa]'
                 }`}
               >
                 <span className="truncate">{sub.name === 'General' ? 'Other Videos' : sub.name}</span>
-                <span className="text-[0.7rem] text-text-tertiary tabular-nums ml-2">
+                <span className="text-[0.65rem] text-[#7a6d5e] tabular-nums ml-2">
                   {sub.videoCount}
                 </span>
               </Link>
