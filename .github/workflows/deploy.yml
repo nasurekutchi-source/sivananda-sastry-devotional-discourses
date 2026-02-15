@@ -4,10 +4,8 @@ on:
   push:
     branches: [main]
   schedule:
-    # Auto-refresh: Every Sunday at 6:00 AM UTC
-    # Fetches latest videos from YouTube, re-categorizes, and redeploys
     - cron: '0 6 * * 0'
-  workflow_dispatch: # Manual trigger
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -15,7 +13,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: false
 
 jobs:
@@ -32,22 +30,20 @@ jobs:
           node-version: 22
           cache: npm
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.12'
 
       - run: npm ci
 
-      # Refresh video data from YouTube (only if API key is configured)
       - name: Fetch and categorize videos
-        if: ${{ secrets.YOUTUBE_API_KEY != '' }}
+        if: env.YOUTUBE_API_KEY != ''
         run: |
           python scripts/fetch-and-categorize.py
           python scripts/generate-data.py
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
 
-      # Commit updated data back to repo (if changed)
       - name: Commit updated data
         run: |
           git config user.name "github-actions[bot]"
@@ -56,7 +52,6 @@ jobs:
           git diff --cached --quiet || git commit -m "chore: auto-refresh video data [skip ci]"
           git push || true
 
-      # Build Next.js static site
       - name: Build
         run: npm run build
         env:
