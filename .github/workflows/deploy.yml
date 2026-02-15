@@ -39,7 +39,7 @@ jobs:
       - run: npm ci
 
       # Refresh video data from YouTube (only if API key is configured)
-      - name: Fetch & categorize videos
+      - name: Fetch and categorize videos
         if: ${{ secrets.YOUTUBE_API_KEY != '' }}
         run: |
           python scripts/fetch-and-categorize.py
