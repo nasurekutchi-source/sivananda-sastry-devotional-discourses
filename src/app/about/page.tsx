@@ -24,7 +24,7 @@ export default function AboutPage() {
             About the Author
           </p>
           <h1 className="font-heading text-3xl md:text-[2.5rem] font-bold text-amber-50 leading-[1.15]">
-            Sivananda Sastry
+            Surekutchi Sivananda Sastry
           </h1>
           <p className="text-sm text-amber-200/60 mt-2 font-semibold tracking-wide">
             M.A. Telugu Literature &amp; Sanskrit
@@ -34,7 +34,7 @@ export default function AboutPage() {
 
       <div className="space-y-6">
         <p className="text-[1.05rem] leading-[1.85] text-text-secondary">
-          <strong className="text-accent-primary font-semibold">Sivananda Sastry</strong> is a
+          <strong className="text-accent-primary font-semibold">Surekutchi Sivananda Sastry</strong> is a
           firm believer of <strong className="text-accent-primary font-semibold">Sanatana Dharma</strong> &mdash;
           the eternal truth that is embedded deep within the great mythological epics of ancient India.
           His lifelong mission is to bring these sacred teachings{' '}
@@ -51,10 +51,9 @@ export default function AboutPage() {
         </p>
 
         <p className="text-[1.05rem] leading-[1.85] text-text-secondary">
-          This website is a comprehensive digital archive of his preachings, available in both{' '}
-          <strong className="text-blue-700 font-semibold">English</strong> and{' '}
+          This website is a comprehensive digital archive of his preachings, delivered in{' '}
           <strong className="text-emerald-700 font-semibold">Telugu</strong>, making these
-          timeless teachings accessible to a global audience. Each video is a gateway to deeper
+          timeless teachings accessible to devotees everywhere. Each video is a gateway to deeper
           understanding of Hindu philosophy, mythology, and devotional practices.
         </p>
 

@@ -45,7 +45,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         <Link href="/" className="block group">
           <div className="w-8 h-[1px] bg-[#8b5a3c]/30 mb-4 group-hover:w-12 transition-all duration-500" />
           <h1 className="font-heading text-[1.4rem] font-bold text-[#3d2914] tracking-[0.02em] leading-tight">
-            Sivananda Sastry
+            Surekutchi Sivananda Sastry
           </h1>
           <p className="text-[0.55rem] text-[#8b7d6f] uppercase tracking-[4px] mt-1.5 font-semibold">
             Spiritual Teacher

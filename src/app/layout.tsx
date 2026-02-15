@@ -29,10 +29,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${lato.variable}`}>
       <head>
-        <title>Sivananda Sastry - Spiritual Teachings</title>
+        <title>Surekutchi Sivananda Sastry - Spiritual Teachings</title>
         <meta
           name="description"
-          content="Explore the comprehensive digital archive of Sivananda Sastry's spiritual teachings — Vedic scriptures, sacred hymns, devotional discourses, and timeless wisdom."
+          content="Explore the comprehensive digital archive of Surekutchi Sivananda Sastry's spiritual teachings — Vedic scriptures, sacred hymns, devotional discourses, and timeless wisdom."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
