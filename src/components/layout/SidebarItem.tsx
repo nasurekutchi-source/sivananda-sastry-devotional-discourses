@@ -38,12 +38,12 @@ export function SidebarItem({ category, currentPath }: SidebarItemProps) {
           onClick={handleCategoryClick}
           className="flex items-center gap-3 flex-1 min-w-0 text-left cursor-pointer"
         >
-          <span className="text-lg shrink-0">{category.icon}</span>
-          <span className="font-heading text-[1.05rem] font-medium text-[#d4c4aa] relative z-[1] truncate">
+          <span className="text-[1.1rem] shrink-0 opacity-80">{category.icon}</span>
+          <span className="font-body text-[0.88rem] font-semibold text-[#c4b59e] relative z-[1] truncate tracking-wide">
             {category.name}
           </span>
         </button>
-        <span className="text-[0.65rem] text-[#9a8b78] bg-[#3d3228] px-2 py-0.5 rounded-full relative z-[1] tabular-nums shrink-0 font-semibold">
+        <span className="text-[0.6rem] text-[#8a7b68] relative z-[1] tabular-nums shrink-0 font-bold tracking-wider">
           {category.videoCount.toLocaleString()}
         </span>
         <button
@@ -51,18 +51,19 @@ export function SidebarItem({ category, currentPath }: SidebarItemProps) {
             e.stopPropagation();
             setExpanded(!expanded);
           }}
-          className="p-1 rounded-md hover:bg-[#3d3228] transition-colors relative z-[1] shrink-0 cursor-pointer"
+          className="p-1.5 rounded hover:bg-[#352a20] transition-colors relative z-[1] shrink-0 cursor-pointer ml-1"
           aria-label={expanded ? 'Collapse' : 'Expand'}
         >
           <svg
-            className={`w-3.5 h-3.5 text-[#9a8b78] transition-transform duration-200 ${
+            className={`w-3 h-3 text-[#7a6d5e] transition-transform duration-200 ${
               expanded ? 'rotate-90' : ''
             }`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
+            strokeWidth={2.5}
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
         </button>
       </div>
@@ -72,7 +73,7 @@ export function SidebarItem({ category, currentPath }: SidebarItemProps) {
           expanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className="ml-9 pl-4 border-l border-[#3d3228] space-y-0.5 py-1">
+        <div className="ml-10 pl-3.5 border-l border-[#3a2f24] space-y-px py-1.5">
           {visibleSubs.map((sub) => {
             const subPath = `/${category.id}/${sub.id}/`;
             const isActive = currentPath === `/${category.id}/${sub.id}` || currentPath === subPath;
@@ -81,15 +82,17 @@ export function SidebarItem({ category, currentPath }: SidebarItemProps) {
               <Link
                 key={sub.id}
                 href={subPath}
-                className={`flex items-center justify-between px-3 py-1.5 text-[0.85rem] rounded-md
-                           transition-colors ${
+                className={`flex items-center justify-between px-3 py-[5px] text-[0.8rem] rounded
+                           transition-all duration-200 ${
                   isActive
-                    ? 'bg-[#c9a96e]/15 text-[#c9a96e] font-medium'
-                    : 'text-[#9a8b78] hover:bg-[#3d3228]/60 hover:text-[#d4c4aa]'
+                    ? 'bg-[#b8976a]/12 text-[#b8976a] font-semibold'
+                    : 'text-[#8a7b68] hover:text-[#c4b59e] hover:bg-[#2a2118]/80'
                 }`}
               >
-                <span className="truncate">{sub.name === 'General' ? 'Other Videos' : sub.name}</span>
-                <span className="text-[0.65rem] text-[#7a6d5e] tabular-nums ml-2">
+                <span className="truncate leading-snug">{sub.name === 'General' ? 'Other Videos' : sub.name}</span>
+                <span className={`text-[0.6rem] tabular-nums ml-2 font-semibold ${
+                  isActive ? 'text-[#b8976a]/60' : 'text-[#5e5347]'
+                }`}>
                   {sub.videoCount}
                 </span>
               </Link>

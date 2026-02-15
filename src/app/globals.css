@@ -33,22 +33,22 @@
 }
 
 @layer components {
-  /* Dark sidebar panel */
+  /* Dark sidebar panel - rich mahogany */
   .sidebar-panel {
-    background: linear-gradient(180deg, #2a2118 0%, #1e1812 50%, #1a140f 100%);
+    background: linear-gradient(180deg, #251c14 0%, #1c1610 40%, #171210 100%);
   }
 
   /* Dark sidebar navigation items */
   .sidebar-nav-item {
-    @apply relative flex items-center gap-3 px-5 py-3 cursor-pointer
-           border-l-[3px] border-transparent
+    @apply relative flex items-center gap-2.5 px-5 py-2.5 cursor-pointer
+           border-l-2 border-transparent
            transition-all duration-200;
   }
 
   .sidebar-nav-item::before {
     content: '';
-    @apply absolute left-0 top-0 h-full w-0 transition-[width] duration-200;
-    background: linear-gradient(90deg, rgba(201, 169, 110, 0.12), transparent);
+    @apply absolute left-0 top-0 h-full w-0 transition-[width] duration-300;
+    background: linear-gradient(90deg, rgba(184, 151, 106, 0.08), transparent);
   }
 
   .sidebar-nav-item:hover::before {
@@ -56,12 +56,12 @@
   }
 
   .sidebar-nav-item:hover {
-    border-left-color: #c9a96e;
+    border-left-color: rgba(184, 151, 106, 0.5);
   }
 
   .sidebar-nav-active {
-    border-left-color: #c9a96e;
-    background: linear-gradient(90deg, rgba(201, 169, 110, 0.1), transparent);
+    border-left-color: #b8976a;
+    background: linear-gradient(90deg, rgba(184, 151, 106, 0.08), transparent);
   }
 
   /* Legacy nav-item (kept for non-sidebar usage) */

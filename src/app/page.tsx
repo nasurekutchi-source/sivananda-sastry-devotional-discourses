@@ -52,9 +52,6 @@ export default function HomePage() {
             'linear-gradient(135deg, #3d2914 0%, #5c3d1e 20%, #8b5a3c 45%, #a06b4a 65%, #c17d4f 85%, #d4a574 100%)',
         }}
       >
-        <div className="absolute right-6 top-1/2 -translate-y-1/2 w-48 h-48 md:w-64 md:h-64 opacity-10">
-          <DecorativeMotif type="om" color="#fef3c7" />
-        </div>
         <div className="absolute -left-8 -bottom-8 w-36 h-36 opacity-[0.06] rotate-12">
           <DecorativeMotif type="lotus" color="#fef3c7" />
         </div>
@@ -66,63 +63,94 @@ export default function HomePage() {
         />
 
         <div className="relative z-10 px-8 py-10 md:px-12 md:py-14">
-          <p className="text-[0.7rem] text-amber-200/60 uppercase tracking-[3px] font-semibold mb-4">
-            About the Author
-          </p>
-          <h2 className="font-heading text-3xl md:text-[2.75rem] font-bold text-amber-50 leading-[1.15] mb-4">
-            Sivananda Sastry
-          </h2>
-          <p className="text-sm md:text-base text-amber-100/80 leading-relaxed max-w-2xl mb-3">
-            A firm believer of <strong className="text-amber-100">Sanatana Dharma</strong> &mdash;
-            the eternal truth embedded deep within the great mythological epics &mdash;
-            Sivananda Sastry&apos;s mission is to bring these sacred teachings{' '}
-            <em className="text-amber-200/90">as-is (Yadhatadham)</em> to everyone.
-          </p>
-          <p className="text-sm text-amber-100/60 leading-relaxed max-w-2xl mb-6">
-            Qualified with a Master&apos;s in Telugu Literature &amp; Sanskrit, his discourses
-            draw from the Vedas, Upanishads, Puranas, and the great epics &mdash; presenting
-            profound wisdom learned from authentic sources in both English and Telugu.
-          </p>
+          <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
+            {/* Bio content */}
+            <div className="flex-1 min-w-0">
+              <p className="text-[0.7rem] text-amber-200/60 uppercase tracking-[3px] font-semibold mb-4">
+                About the Author
+              </p>
+              <h2 className="font-heading text-3xl md:text-[2.75rem] font-bold text-amber-50 leading-[1.15] mb-4">
+                Sivananda Sastry
+              </h2>
+              <p className="text-[0.65rem] text-amber-300/50 uppercase tracking-[2px] font-semibold mb-5">
+                M.A. Telugu Literature &amp; Sanskrit
+              </p>
+              <p className="text-sm md:text-base text-amber-100/85 leading-relaxed mb-3">
+                A firm believer of <strong className="text-amber-100">Sanatana Dharma</strong> &mdash;
+                the eternal, universal truth that lies at the heart of India&apos;s great spiritual heritage &mdash;
+                Sivananda Sastry has dedicated his life to preserving and sharing these sacred teachings
+                {' '}<em className="text-amber-200/90">as-is (Yadhatadham)</em>, without dilution or
+                modern reinterpretation.
+              </p>
+              <p className="text-sm text-amber-100/65 leading-relaxed mb-3">
+                His discourses draw deeply from the <strong className="text-amber-100/80">Vedas, Upanishads,
+                Puranas, Ramayana, Mahabharata, Bhagavad Gita</strong>, and other foundational scriptures.
+                Qualified with a Master&apos;s degree in Telugu Literature &amp; Sanskrit, he brings
+                both scholarly depth and devotional sincerity to every teaching.
+              </p>
+              <p className="text-sm text-amber-100/50 leading-relaxed mb-6">
+                With over {categories?.totalVideos.toLocaleString() || '10,000'} video discourses in both
+                English and Telugu, this archive represents one of the most comprehensive collections of
+                authentic Vedic and Puranic teachings available today.
+              </p>
 
-          {/* Stats integrated into hero */}
-          <div className="flex flex-wrap gap-2.5 mb-6">
-            {[
-              { value: categories?.totalVideos.toLocaleString() || '0', label: 'Videos' },
-              { value: visibleCategories.length.toString(), label: 'Categories' },
-              { value: totalSubsections.toString(), label: 'Sections' },
-              ...(stats
-                ? [
-                    { value: stats.languageCounts.english.toLocaleString(), label: 'English' },
-                    { value: stats.languageCounts.telugu.toLocaleString(), label: 'Telugu' },
-                  ]
-                : []),
-            ].map((stat) => (
-              <div
-                key={stat.label}
-                className="flex items-center gap-2 px-3.5 py-1.5 rounded-lg"
-                style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}
-              >
-                <span className="font-heading text-lg font-bold text-amber-100">{stat.value}</span>
-                <span className="text-[0.65rem] text-amber-200/60 uppercase tracking-wider font-semibold">{stat.label}</span>
+              {/* Stats */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                {[
+                  { value: categories?.totalVideos.toLocaleString() || '0', label: 'Videos' },
+                  { value: visibleCategories.length.toString(), label: 'Categories' },
+                  { value: totalSubsections.toString(), label: 'Sections' },
+                  ...(stats
+                    ? [
+                        { value: stats.languageCounts.english.toLocaleString(), label: 'English' },
+                        { value: stats.languageCounts.telugu.toLocaleString(), label: 'Telugu' },
+                      ]
+                    : []),
+                ].map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg"
+                    style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}
+                  >
+                    <span className="font-heading text-lg font-bold text-amber-100">{stat.value}</span>
+                    <span className="text-[0.6rem] text-amber-200/60 uppercase tracking-wider font-semibold">{stat.label}</span>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
 
-          <a
-            href={CHANNEL_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2 bg-white/15 text-amber-50
-                       rounded-full text-sm font-semibold
-                       border border-white/20
-                       hover:bg-white/25 hover:-translate-y-0.5
-                       transition-all duration-300"
-          >
-            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-            </svg>
-            Visit YouTube Channel
-          </a>
+              <a
+                href={CHANNEL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2 bg-white/15 text-amber-50
+                           rounded-full text-sm font-semibold
+                           border border-white/20
+                           hover:bg-white/25 hover:-translate-y-0.5
+                           transition-all duration-300"
+              >
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                </svg>
+                Visit YouTube Channel
+              </a>
+            </div>
+
+            {/* Author Photo */}
+            <div className="shrink-0 mx-auto md:mx-0">
+              <div className="relative">
+                <div className="w-48 h-56 md:w-56 md:h-64 rounded-xl overflow-hidden border-2 border-amber-200/20 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/author.jpeg`}
+                    alt="Sivananda Sastry"
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+                <div className="absolute -bottom-2 -right-2 w-20 h-20 opacity-20">
+                  <DecorativeMotif type="om" color="#fef3c7" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

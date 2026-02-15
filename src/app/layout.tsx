@@ -63,7 +63,7 @@ export default function RootLayout({
 
         <div className="flex min-h-screen">
           <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-          <main className="flex-1 lg:ml-[300px] min-h-screen bg-bg-primary">
+          <main className="flex-1 lg:ml-[280px] min-h-screen bg-bg-primary">
             <div className="px-4 py-8 sm:px-6 lg:px-12 lg:py-10 max-w-[1400px]">
               {children}
             </div>
