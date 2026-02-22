@@ -1,11 +1,11 @@
 {
-  "totalVideos": 10962,
+  "totalVideos": 10987,
   "categories": [
     {
       "id": "srimadbhagavatam",
       "name": "Srimadbhagavatam",
       "icon": "📖",
-      "videoCount": 2774,
+      "videoCount": 2780,
       "subcategories": [
         {
           "id": "prathama-skandha",
@@ -45,7 +45,7 @@
         {
           "id": "dashama-skandha",
           "name": "Dashama Skandha",
-          "videoCount": 95
+          "videoCount": 101
         },
         {
           "id": "dvadasha-skandha",
@@ -63,7 +63,7 @@
       "id": "ramayanam",
       "name": "Ramayanam",
       "icon": "🏹",
-      "videoCount": 2303,
+      "videoCount": 2309,
       "subcategories": [
         {
           "id": "bala-kanda",
@@ -93,7 +93,7 @@
         {
           "id": "uttara-kanda",
           "name": "Uttara Kanda",
-          "videoCount": 288
+          "videoCount": 294
         },
         {
           "id": "general",
@@ -106,7 +106,7 @@
       "id": "mahabharatam",
       "name": "Mahabharatam",
       "icon": "⚔️",
-      "videoCount": 3028,
+      "videoCount": 3039,
       "subcategories": [
         {
           "id": "adi-parva",
@@ -156,7 +156,7 @@
         {
           "id": "shanti-parva",
           "name": "Shanti Parva",
-          "videoCount": 555
+          "videoCount": 562
         },
         {
           "id": "svargarohana-parva",
@@ -166,7 +166,7 @@
         {
           "id": "general",
           "name": "General",
-          "videoCount": 1654
+          "videoCount": 1658
         }
       ]
     },
@@ -202,7 +202,7 @@
       "id": "spiritual-discourses",
       "name": "Spiritual Discourses",
       "icon": "🙏",
-      "videoCount": 2146,
+      "videoCount": 2148,
       "subcategories": [
         {
           "id": "untitled-discourses",
@@ -232,7 +232,7 @@
         {
           "id": "magha-puranam",
           "name": "Magha Puranam",
-          "videoCount": 143
+          "videoCount": 145
         },
         {
           "id": "karthikapuranam",
