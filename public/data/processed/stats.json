@@ -1,11 +1,11 @@
 {
-  "totalVideos": 10987,
+  "totalVideos": 11008,
   "totalCategories": 5,
   "totalSubcategories": 55,
   "languageCounts": {
-    "english": 9991,
+    "english": 10012,
     "telugu": 979,
     "mixed": 17
   },
-  "lastUpdated": "2026-02-22"
+  "lastUpdated": "2026-03-01"
 }

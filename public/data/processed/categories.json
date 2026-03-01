@@ -1,11 +1,11 @@
 {
-  "totalVideos": 10987,
+  "totalVideos": 11008,
   "categories": [
     {
       "id": "srimadbhagavatam",
       "name": "Srimadbhagavatam",
       "icon": "📖",
-      "videoCount": 2780,
+      "videoCount": 2785,
       "subcategories": [
         {
           "id": "prathama-skandha",
@@ -40,12 +40,12 @@
         {
           "id": "navama-skandha",
           "name": "Navama Skandha",
-          "videoCount": 130
+          "videoCount": 131
         },
         {
           "id": "dashama-skandha",
           "name": "Dashama Skandha",
-          "videoCount": 101
+          "videoCount": 105
         },
         {
           "id": "dvadasha-skandha",
@@ -63,7 +63,7 @@
       "id": "ramayanam",
       "name": "Ramayanam",
       "icon": "🏹",
-      "videoCount": 2309,
+      "videoCount": 2314,
       "subcategories": [
         {
           "id": "bala-kanda",
@@ -93,7 +93,7 @@
         {
           "id": "uttara-kanda",
           "name": "Uttara Kanda",
-          "videoCount": 294
+          "videoCount": 299
         },
         {
           "id": "general",
@@ -106,12 +106,12 @@
       "id": "mahabharatam",
       "name": "Mahabharatam",
       "icon": "⚔️",
-      "videoCount": 3039,
+      "videoCount": 3048,
       "subcategories": [
         {
           "id": "adi-parva",
           "name": "Adi Parva",
-          "videoCount": 265
+          "videoCount": 269
         },
         {
           "id": "sabha-parva",
@@ -156,7 +156,7 @@
         {
           "id": "shanti-parva",
           "name": "Shanti Parva",
-          "videoCount": 562
+          "videoCount": 567
         },
         {
           "id": "svargarohana-parva",
@@ -202,7 +202,7 @@
       "id": "spiritual-discourses",
       "name": "Spiritual Discourses",
       "icon": "🙏",
-      "videoCount": 2148,
+      "videoCount": 2150,
       "subcategories": [
         {
           "id": "untitled-discourses",
@@ -227,7 +227,7 @@
         {
           "id": "other-discourses",
           "name": "Other Discourses",
-          "videoCount": 181
+          "videoCount": 183
         },
         {
           "id": "magha-puranam",
