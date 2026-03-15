@@ -1,11 +1,11 @@
 {
-  "totalVideos": 11021,
+  "totalVideos": 11049,
   "categories": [
     {
       "id": "srimadbhagavatam",
       "name": "Srimadbhagavatam",
       "icon": "📖",
-      "videoCount": 2789,
+      "videoCount": 2796,
       "subcategories": [
         {
           "id": "prathama-skandha",
@@ -45,7 +45,7 @@
         {
           "id": "dashama-skandha",
           "name": "Dashama Skandha",
-          "videoCount": 109
+          "videoCount": 116
         },
         {
           "id": "dvadasha-skandha",
@@ -63,12 +63,12 @@
       "id": "ramayanam",
       "name": "Ramayanam",
       "icon": "🏹",
-      "videoCount": 2317,
+      "videoCount": 2324,
       "subcategories": [
         {
           "id": "bala-kanda",
           "name": "Bala Kanda",
-          "videoCount": 91
+          "videoCount": 97
         },
         {
           "id": "ayodhya-kanda",
@@ -98,7 +98,7 @@
         {
           "id": "general",
           "name": "General",
-          "videoCount": 1212
+          "videoCount": 1213
         }
       ]
     },
@@ -106,12 +106,12 @@
       "id": "mahabharatam",
       "name": "Mahabharatam",
       "icon": "⚔️",
-      "videoCount": 3052,
+      "videoCount": 3064,
       "subcategories": [
         {
           "id": "adi-parva",
           "name": "Adi Parva",
-          "videoCount": 270
+          "videoCount": 275
         },
         {
           "id": "sabha-parva",
@@ -156,7 +156,7 @@
         {
           "id": "shanti-parva",
           "name": "Shanti Parva",
-          "videoCount": 570
+          "videoCount": 577
         },
         {
           "id": "svargarohana-parva",
@@ -202,7 +202,7 @@
       "id": "spiritual-discourses",
       "name": "Spiritual Discourses",
       "icon": "🙏",
-      "videoCount": 2152,
+      "videoCount": 2154,
       "subcategories": [
         {
           "id": "untitled-discourses",
@@ -227,7 +227,7 @@
         {
           "id": "other-discourses",
           "name": "Other Discourses",
-          "videoCount": 181
+          "videoCount": 182
         },
         {
           "id": "magha-puranam",
@@ -280,6 +280,11 @@
           "videoCount": 5
         },
         {
+          "id": "bharatham-loni-viseshaalu",
+          "name": "Bharatham Loni viseshaalu",
+          "videoCount": 5
+        },
+        {
           "id": "radio-geetham",
           "name": "Radio geetham",
           "videoCount": 5
@@ -292,11 +297,6 @@
         {
           "id": "19-2021",
           "name": "19 ఏప్రిల్, 2021",
-          "videoCount": 4
-        },
-        {
-          "id": "bharatham-loni-viseshaalu",
-          "name": "Bharatham Loni viseshaalu",
           "videoCount": 4
         },
         {
