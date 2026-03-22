@@ -1,11 +1,11 @@
 {
-  "totalVideos": 11049,
+  "totalVideos": 11073,
   "categories": [
     {
       "id": "srimadbhagavatam",
       "name": "Srimadbhagavatam",
       "icon": "📖",
-      "videoCount": 2796,
+      "videoCount": 2802,
       "subcategories": [
         {
           "id": "prathama-skandha",
@@ -45,7 +45,7 @@
         {
           "id": "dashama-skandha",
           "name": "Dashama Skandha",
-          "videoCount": 116
+          "videoCount": 120
         },
         {
           "id": "dvadasha-skandha",
@@ -55,7 +55,7 @@
         {
           "id": "general",
           "name": "General",
-          "videoCount": 1677
+          "videoCount": 1679
         }
       ]
     },
@@ -63,12 +63,12 @@
       "id": "ramayanam",
       "name": "Ramayanam",
       "icon": "🏹",
-      "videoCount": 2324,
+      "videoCount": 2330,
       "subcategories": [
         {
           "id": "bala-kanda",
           "name": "Bala Kanda",
-          "videoCount": 97
+          "videoCount": 104
         },
         {
           "id": "ayodhya-kanda",
@@ -98,7 +98,7 @@
         {
           "id": "general",
           "name": "General",
-          "videoCount": 1213
+          "videoCount": 1212
         }
       ]
     },
@@ -106,12 +106,12 @@
       "id": "mahabharatam",
       "name": "Mahabharatam",
       "icon": "⚔️",
-      "videoCount": 3064,
+      "videoCount": 3078,
       "subcategories": [
         {
           "id": "adi-parva",
           "name": "Adi Parva",
-          "videoCount": 275
+          "videoCount": 286
         },
         {
           "id": "sabha-parva",
@@ -156,7 +156,7 @@
         {
           "id": "shanti-parva",
           "name": "Shanti Parva",
-          "videoCount": 577
+          "videoCount": 583
         },
         {
           "id": "svargarohana-parva",
@@ -166,7 +166,7 @@
         {
           "id": "general",
           "name": "General",
-          "videoCount": 1658
+          "videoCount": 1655
         }
       ]
     },
@@ -202,7 +202,7 @@
       "id": "spiritual-discourses",
       "name": "Spiritual Discourses",
       "icon": "🙏",
-      "videoCount": 2154,
+      "videoCount": 2152,
       "subcategories": [
         {
           "id": "untitled-discourses",
@@ -280,11 +280,6 @@
           "videoCount": 5
         },
         {
-          "id": "bharatham-loni-viseshaalu",
-          "name": "Bharatham Loni viseshaalu",
-          "videoCount": 5
-        },
-        {
           "id": "radio-geetham",
           "name": "Radio geetham",
           "videoCount": 5
@@ -303,6 +298,11 @@
           "id": "kaartheeka-puraanam",
           "name": "kaartheeka puraanam",
           "videoCount": 4
+        },
+        {
+          "id": "bharatham-loni-viseshaalu",
+          "name": "Bharatham Loni viseshaalu",
+          "videoCount": 3
         },
         {
           "id": "dhanurmasavratam",
