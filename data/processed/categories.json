@@ -1,11 +1,11 @@
 {
-  "totalVideos": 11073,
+  "totalVideos": 11101,
   "categories": [
     {
       "id": "srimadbhagavatam",
       "name": "Srimadbhagavatam",
       "icon": "📖",
-      "videoCount": 2802,
+      "videoCount": 2809,
       "subcategories": [
         {
           "id": "prathama-skandha",
@@ -45,7 +45,7 @@
         {
           "id": "dashama-skandha",
           "name": "Dashama Skandha",
-          "videoCount": 120
+          "videoCount": 127
         },
         {
           "id": "dvadasha-skandha",
@@ -63,12 +63,12 @@
       "id": "ramayanam",
       "name": "Ramayanam",
       "icon": "🏹",
-      "videoCount": 2330,
+      "videoCount": 2337,
       "subcategories": [
         {
           "id": "bala-kanda",
           "name": "Bala Kanda",
-          "videoCount": 104
+          "videoCount": 111
         },
         {
           "id": "ayodhya-kanda",
@@ -106,12 +106,12 @@
       "id": "mahabharatam",
       "name": "Mahabharatam",
       "icon": "⚔️",
-      "videoCount": 3078,
+      "videoCount": 3090,
       "subcategories": [
         {
           "id": "adi-parva",
           "name": "Adi Parva",
-          "videoCount": 286
+          "videoCount": 291
         },
         {
           "id": "sabha-parva",
@@ -156,7 +156,7 @@
         {
           "id": "shanti-parva",
           "name": "Shanti Parva",
-          "videoCount": 583
+          "videoCount": 589
         },
         {
           "id": "svargarohana-parva",
@@ -166,7 +166,7 @@
         {
           "id": "general",
           "name": "General",
-          "videoCount": 1655
+          "videoCount": 1656
         }
       ]
     },
@@ -202,7 +202,7 @@
       "id": "spiritual-discourses",
       "name": "Spiritual Discourses",
       "icon": "🙏",
-      "videoCount": 2152,
+      "videoCount": 2154,
       "subcategories": [
         {
           "id": "untitled-discourses",
@@ -222,12 +222,12 @@
         {
           "id": "radiogeetham",
           "name": "Radiogeetham",
-          "videoCount": 245
+          "videoCount": 246
         },
         {
           "id": "other-discourses",
           "name": "Other Discourses",
-          "videoCount": 182
+          "videoCount": 183
         },
         {
           "id": "magha-puranam",
