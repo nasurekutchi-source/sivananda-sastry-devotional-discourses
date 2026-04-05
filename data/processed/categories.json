@@ -1,11 +1,11 @@
 {
-  "totalVideos": 11101,
+  "totalVideos": 11129,
   "categories": [
     {
       "id": "srimadbhagavatam",
       "name": "Srimadbhagavatam",
       "icon": "📖",
-      "videoCount": 2809,
+      "videoCount": 2816,
       "subcategories": [
         {
           "id": "prathama-skandha",
@@ -45,7 +45,7 @@
         {
           "id": "dashama-skandha",
           "name": "Dashama Skandha",
-          "videoCount": 127
+          "videoCount": 134
         },
         {
           "id": "dvadasha-skandha",
@@ -63,12 +63,12 @@
       "id": "ramayanam",
       "name": "Ramayanam",
       "icon": "🏹",
-      "videoCount": 2337,
+      "videoCount": 2344,
       "subcategories": [
         {
           "id": "bala-kanda",
           "name": "Bala Kanda",
-          "videoCount": 111
+          "videoCount": 118
         },
         {
           "id": "ayodhya-kanda",
@@ -106,12 +106,12 @@
       "id": "mahabharatam",
       "name": "Mahabharatam",
       "icon": "⚔️",
-      "videoCount": 3090,
+      "videoCount": 3104,
       "subcategories": [
         {
           "id": "adi-parva",
           "name": "Adi Parva",
-          "videoCount": 291
+          "videoCount": 298
         },
         {
           "id": "sabha-parva",
@@ -156,7 +156,7 @@
         {
           "id": "shanti-parva",
           "name": "Shanti Parva",
-          "videoCount": 589
+          "videoCount": 596
         },
         {
           "id": "svargarohana-parva",
@@ -222,12 +222,12 @@
         {
           "id": "radiogeetham",
           "name": "Radiogeetham",
-          "videoCount": 246
+          "videoCount": 245
         },
         {
           "id": "other-discourses",
           "name": "Other Discourses",
-          "videoCount": 183
+          "videoCount": 184
         },
         {
           "id": "magha-puranam",
