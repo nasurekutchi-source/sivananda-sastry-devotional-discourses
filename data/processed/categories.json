@@ -1,11 +1,11 @@
 {
-  "totalVideos": 11137,
+  "totalVideos": 11162,
   "categories": [
     {
       "id": "srimadbhagavatam",
       "name": "Srimadbhagavatam",
       "icon": "📖",
-      "videoCount": 2818,
+      "videoCount": 2824,
       "subcategories": [
         {
           "id": "prathama-skandha",
@@ -45,7 +45,7 @@
         {
           "id": "dashama-skandha",
           "name": "Dashama Skandha",
-          "videoCount": 136
+          "videoCount": 142
         },
         {
           "id": "dvadasha-skandha",
@@ -63,12 +63,12 @@
       "id": "ramayanam",
       "name": "Ramayanam",
       "icon": "🏹",
-      "videoCount": 2346,
+      "videoCount": 2352,
       "subcategories": [
         {
           "id": "bala-kanda",
           "name": "Bala Kanda",
-          "videoCount": 120
+          "videoCount": 126
         },
         {
           "id": "ayodhya-kanda",
@@ -106,12 +106,12 @@
       "id": "mahabharatam",
       "name": "Mahabharatam",
       "icon": "⚔️",
-      "videoCount": 3108,
+      "videoCount": 3121,
       "subcategories": [
         {
           "id": "adi-parva",
           "name": "Adi Parva",
-          "videoCount": 300
+          "videoCount": 306
         },
         {
           "id": "sabha-parva",
@@ -156,7 +156,7 @@
         {
           "id": "shanti-parva",
           "name": "Shanti Parva",
-          "videoCount": 598
+          "videoCount": 605
         },
         {
           "id": "svargarohana-parva",
