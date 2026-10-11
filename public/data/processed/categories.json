@@ -1,11 +1,11 @@
 {
-  "totalVideos": 11579,
+  "totalVideos": 11589,
   "categories": [
     {
       "id": "srimadbhagavatam",
       "name": "Srimadbhagavatam",
       "icon": "📖",
-      "videoCount": 2924,
+      "videoCount": 2927,
       "subcategories": [
         {
           "id": "prathama-skandha",
@@ -45,7 +45,7 @@
         {
           "id": "dashama-skandha",
           "name": "Dashama Skandha",
-          "videoCount": 242
+          "videoCount": 245
         },
         {
           "id": "dvadasha-skandha",
@@ -63,7 +63,7 @@
       "id": "ramayanam",
       "name": "Ramayanam",
       "icon": "🏹",
-      "videoCount": 2454,
+      "videoCount": 2457,
       "subcategories": [
         {
           "id": "bala-kanda",
@@ -73,7 +73,7 @@
         {
           "id": "ayodhya-kanda",
           "name": "Ayodhya Kanda",
-          "videoCount": 210
+          "videoCount": 213
         },
         {
           "id": "aranya-kanda",
@@ -106,7 +106,7 @@
       "id": "mahabharatam",
       "name": "Mahabharatam",
       "icon": "⚔️",
-      "videoCount": 3330,
+      "videoCount": 3331,
       "subcategories": [
         {
           "id": "adi-parva",
@@ -156,7 +156,7 @@
         {
           "id": "shanti-parva",
           "name": "Shanti Parva",
-          "videoCount": 712
+          "videoCount": 713
         },
         {
           "id": "svargarohana-parva",
@@ -202,7 +202,7 @@
       "id": "spiritual-discourses",
       "name": "Spiritual Discourses",
       "icon": "🙏",
-      "videoCount": 2160,
+      "videoCount": 2163,
       "subcategories": [
         {
           "id": "untitled-discourses",
@@ -227,7 +227,7 @@
         {
           "id": "other-discourses",
           "name": "Other Discourses",
-          "videoCount": 190
+          "videoCount": 188
         },
         {
           "id": "magha-puranam",
@@ -277,6 +277,11 @@
         {
           "id": "8-2022",
           "name": "8 జనవరి, 2022",
+          "videoCount": 5
+        },
+        {
+          "id": "bharatamlo-viseshaalu",
+          "name": "Bharatamlo viseshaalu",
           "videoCount": 5
         },
         {
