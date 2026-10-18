@@ -1,11 +1,11 @@
 {
-  "totalVideos": 11589,
+  "totalVideos": 11606,
   "categories": [
     {
       "id": "srimadbhagavatam",
       "name": "Srimadbhagavatam",
       "icon": "📖",
-      "videoCount": 2927,
+      "videoCount": 2932,
       "subcategories": [
         {
           "id": "prathama-skandha",
@@ -45,7 +45,7 @@
         {
           "id": "dashama-skandha",
           "name": "Dashama Skandha",
-          "videoCount": 245
+          "videoCount": 250
         },
         {
           "id": "dvadasha-skandha",
@@ -63,7 +63,7 @@
       "id": "ramayanam",
       "name": "Ramayanam",
       "icon": "🏹",
-      "videoCount": 2457,
+      "videoCount": 2462,
       "subcategories": [
         {
           "id": "bala-kanda",
@@ -73,7 +73,7 @@
         {
           "id": "ayodhya-kanda",
           "name": "Ayodhya Kanda",
-          "videoCount": 213
+          "videoCount": 218
         },
         {
           "id": "aranya-kanda",
@@ -106,7 +106,7 @@
       "id": "mahabharatam",
       "name": "Mahabharatam",
       "icon": "⚔️",
-      "videoCount": 3331,
+      "videoCount": 3333,
       "subcategories": [
         {
           "id": "adi-parva",
@@ -156,7 +156,7 @@
         {
           "id": "shanti-parva",
           "name": "Shanti Parva",
-          "videoCount": 713
+          "videoCount": 715
         },
         {
           "id": "svargarohana-parva",
@@ -202,7 +202,7 @@
       "id": "spiritual-discourses",
       "name": "Spiritual Discourses",
       "icon": "🙏",
-      "videoCount": 2163,
+      "videoCount": 2168,
       "subcategories": [
         {
           "id": "untitled-discourses",
@@ -270,6 +270,11 @@
           "videoCount": 15
         },
         {
+          "id": "bharatamlo-viseshaalu",
+          "name": "Bharatamlo viseshaalu",
+          "videoCount": 10
+        },
+        {
           "id": "gurupournima-celebrations",
           "name": "Gurupournima celebrations",
           "videoCount": 8
@@ -277,11 +282,6 @@
         {
           "id": "8-2022",
           "name": "8 జనవరి, 2022",
-          "videoCount": 5
-        },
-        {
-          "id": "bharatamlo-viseshaalu",
-          "name": "Bharatamlo viseshaalu",
           "videoCount": 5
         },
         {
