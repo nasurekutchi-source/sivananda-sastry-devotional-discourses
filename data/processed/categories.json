@@ -1,11 +1,11 @@
 {
-  "totalVideos": 11649,
+  "totalVideos": 11673,
   "categories": [
     {
       "id": "srimadbhagavatam",
       "name": "Srimadbhagavatam",
       "icon": "📖",
-      "videoCount": 2946,
+      "videoCount": 2952,
       "subcategories": [
         {
           "id": "prathama-skandha",
@@ -45,7 +45,7 @@
         {
           "id": "dashama-skandha",
           "name": "Dashama Skandha",
-          "videoCount": 264
+          "videoCount": 270
         },
         {
           "id": "dvadasha-skandha",
@@ -63,7 +63,7 @@
       "id": "ramayanam",
       "name": "Ramayanam",
       "icon": "🏹",
-      "videoCount": 2476,
+      "videoCount": 2482,
       "subcategories": [
         {
           "id": "bala-kanda",
@@ -73,7 +73,7 @@
         {
           "id": "ayodhya-kanda",
           "name": "Ayodhya Kanda",
-          "videoCount": 232
+          "videoCount": 238
         },
         {
           "id": "aranya-kanda",
@@ -106,7 +106,7 @@
       "id": "mahabharatam",
       "name": "Mahabharatam",
       "icon": "⚔️",
-      "videoCount": 3334,
+      "videoCount": 3339,
       "subcategories": [
         {
           "id": "adi-parva",
@@ -156,7 +156,7 @@
         {
           "id": "shanti-parva",
           "name": "Shanti Parva",
-          "videoCount": 716
+          "videoCount": 721
         },
         {
           "id": "svargarohana-parva",
@@ -202,7 +202,7 @@
       "id": "spiritual-discourses",
       "name": "Spiritual Discourses",
       "icon": "🙏",
-      "videoCount": 2182,
+      "videoCount": 2189,
       "subcategories": [
         {
           "id": "untitled-discourses",
@@ -227,7 +227,7 @@
         {
           "id": "other-discourses",
           "name": "Other Discourses",
-          "videoCount": 188
+          "videoCount": 190
         },
         {
           "id": "magha-puranam",
@@ -250,14 +250,14 @@
           "videoCount": 37
         },
         {
+          "id": "bharatamlo-viseshaalu",
+          "name": "Bharatamlo viseshaalu",
+          "videoCount": 29
+        },
+        {
           "id": "maagha-puraanam",
           "name": "maagha puraanam",
           "videoCount": 25
-        },
-        {
-          "id": "bharatamlo-viseshaalu",
-          "name": "Bharatamlo viseshaalu",
-          "videoCount": 24
         },
         {
           "id": "radiogeetam",
